@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samaira Aima — Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --warm-white: #FDFAF6;
+    --cream: #F5EFE6;
+    --rose: #F2DDE0;
+    --rose-dark: #8C3A45;
+    --rose-mid: #C4818A;
+    --yellow: #F7EEB8;
+    --yellow-dark: #7A6300;
+    --terracotta: #F5E6D3;
+    --terra-dark: #8C5E2A;
+    --terra-mid: #C4956A;
+    --ink: #2C2519;
+    --muted: #7A6B5A;
+    --border: #E8DDD0;
+    --light-text: #B0A090;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(253,250,246,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 64px;
+  }
+
+  .nav-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    padding: 100px 64px 80px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+    min-height: 88vh;
+  }
+
+  .hero-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terra-mid);
+    margin-bottom: 28px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--terra-mid);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 62px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose-mid);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 400px;
+    margin-bottom: 40px;
+  }
+
+  .hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 500;
+    transition: gap 0.25s;
+  }
+
+  .hero-cta:hover { gap: 18px; }
+
+  .cta-circle {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .hero-cta:hover .cta-circle {
+    background: var(--ink);
+    color: var(--warm-white);
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .pill {
+    padding: 10px 22px;
+    border-radius: 40px;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  .pill-terra { background: var(--terracotta); color: var(--terra-dark); }
+  .pill-yellow { background: var(--yellow); color: var(--yellow-dark); }
+  .pill-rose { background: var(--rose); color: var(--rose-dark); }
+
+  .hero-scroll {
+    margin-top: 20px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-scroll::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 32px;
+    background: var(--border);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 0.5px;
+    background: var(--border);
+    margin: 0 64px;
+  }
+
+  /* SECTION BASE */
+  section { padding: 80px 64px; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--light-text);
+    margin-bottom: 48px;
+  }
+
+  /* WORK */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .work-card {
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(44,37,25,0.08);
+  }
+
+  .card-top {
+    height: 148px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-style: italic;
+  }
+
+  .card-top.writing { background: var(--yellow); color: var(--yellow-dark); }
+  .card-top.cases { background: var(--rose); color: var(--rose-dark); }
+  .card-top.design { background: var(--terracotta); color: var(--terra-dark); }
+
+  .card-body { padding: 20px 22px 24px; }
+
+  .card-type {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--light-text);
+    margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .card-tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--terra-mid);
+    border-bottom: 1px solid var(--terra-mid);
+    padding-bottom: 1px;
+  }
+
+  /* WRITING */
+  .writing-section { border-top: 0.5px solid var(--border); }
+
+  .writing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .writing-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 0.5px solid var(--border);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .writing-item:hover { background: var(--cream); margin: 0 -64px; padding: 28px 64px; }
+
+  .writing-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--light-text);
+    font-style: italic;
+    padding-top: 3px;
+  }
+
+  .writing-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .writing-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .writing-tag {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light-text);
+    padding-top: 4px;
+    white-space: nowrap;
+  }
+
+  /* ABOUT */
+  .about-section {
+    border-top: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .about-section h2 em {
+    font-style: italic;
+    color: var(--rose-mid);
+  }
+
+  .about-section p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+
+  .about-tag {
+    background: var(--cream);
+    border: 0.5px solid var(--border);
+    border-radius: 20px;
+    padding: 7px 16px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .about-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .about-card {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 26px;
+  }
+
+  .about-card-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--light-text);
+    margin-bottom: 8px;
+  }
+
+  .about-card-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--ink);
+  }
+
+  .about-card.rose-bg { background: var(--rose); border-color: transparent; }
+  .about-card.rose-bg .about-card-label { color: var(--rose-mid); }
+  .about-card.rose-bg .about-card-val { color: var(--rose-dark); }
+
+  /* CONTACT */
+  .contact-section {
+    border-top: 0.5px solid var(--border);
+    text-align: center;
+    padding: 100px 64px;
+  }
+
+  .contact-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .contact-section h2 em { font-style: italic; color: var(--rose-mid); }
+
+  .contact-section p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 440px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--warm-white);
+  }
+
+  .btn-primary:hover { background: #4A3E2E; }
+
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+  }
+
+  .btn-outline:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 28px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--light-text);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--ink); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .nav-links { gap: 20px; }
+    .hero { grid-template-columns: 1fr; padding: 60px 24px 48px; min-height: auto; gap: 40px; }
+    .hero h1 { font-size: 42px; }
+    .hero-right { flex-direction: row; flex-wrap: wrap; }
+    .divider { margin: 0 24px; }
+    section { padding: 60px 24px; }
+    .work-grid { grid-template-columns: 1fr; }
+    .writing-item { grid-template-columns: 40px 1fr; }
+    .writing-tag { display: none; }
+    .about-section { grid-template-columns: 1fr; gap: 40px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+    .contact-section { padding: 60px 24px; }
+    .contact-section h2 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Samaira Aima</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Marketing Portfolio</div>
+    <h1>Strategy.<br><em>Story.</em><br>Impact.</h1>
+    <p class="hero-sub">Marketing student at UBC Sauder. I build brands, shape campaigns, and create experiences that actually mean something to the people they're for.</p>
+    <a href="#work" class="hero-cta">
+      <span>See my work</span>
+      <div class="cta-circle">→</div>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="pill pill-terra">Digital marketing</div>
+    <div class="pill pill-yellow">Brand strategy</div>
+    <div class="pill pill-rose">Content creation</div>
+    <div class="pill pill-terra">Community engagement</div>
+    <div class="hero-scroll">Scroll to explore</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-label">Selected work</div>
+  <div class="work-grid">
+    <div class="work-card">
+      <div class="card-top writing">Writing</div>
+      <div class="card-body">
+        <div class="card-type">Essays & Analysis</div>
+        <div class="card-title">On brand voice</div>
+        <div class="card-desc">Teardowns, opinions, and thinking on brands that get it — and ones that don't.</div>
+        <span class="card-tag">Coming soon</span>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="card-top cases">Cases</div>
+      <div class="card-body">
+        <div class="card-type">Case Studies</div>
+        <div class="card-title">Real problems</div>
+        <div class="card-desc">Strategy and research projects — problem, insight, solution, and what I'd do differently.</div>
+        <span class="card-tag">Coming soon</span>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="card-top design">Design</div>
+      <div class="card-body">
+        <div class="card-type">Content & Campaigns</div>
+        <div class="card-title">Made things</div>
+        <div class="card-desc">Posts, reels, campaigns, and visual work. Marketing you can actually see.</div>
+        <span class="card-tag">Coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WRITING -->
+<section id="writing" class="writing-section">
+  <div class="section-label">Writing</div>
+  <div class="writing-list">
+    <div class="writing-item">
+      <span class="writing-num">01</span>
+      <div>
+        <div class="writing-title">Why most brand storytelling feels hollow</div>
+        <div class="writing-desc">A look at what separates brands that actually connect from ones that just post content.</div>
+      </div>
+      <span class="writing-tag">Coming soon</span>
+    </div>
+    <div class="writing-item">
+      <span class="writing-num">02</span>
+      <div>
+        <div class="writing-title">Community as a marketing strategy, not an afterthought</div>
+        <div class="writing-desc">How brands that treat community as a channel are doing it wrong — and what it actually takes.</div>
+      </div>
+      <span class="writing-tag">Coming soon</span>
+    </div>
+    <div class="writing-item">
+      <span class="writing-num">03</span>
+      <div>
+        <div class="writing-title">The case for specificity in brand voice</div>
+        <div class="writing-desc">Generic language is the enemy of connection. On why being specific is always the braver choice.</div>
+      </div>
+      <span class="writing-tag">Coming soon</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+  <div>
+    <div class="section-label">About</div>
+    <h2>Marketing is just<br><em>human connection</em><br>with strategy behind it.</h2>
+    <p>I'm a marketing student at UBC Sauder with experience across digital marketing, branding, content creation, and community engagement. I've built that experience through student organizations, internships, and projects I cared enough about to start myself.</p>
+    <p>I'm drawn to the work that sits between creativity and strategy — the brief that needs both a sharp idea and a sound plan behind it. Outside of all that, I'm probably at a café I haven't tried yet, or planning my next trip.</p>
+    <div class="about-tags">
+      <span class="about-tag">Digital marketing</span>
+      <span class="about-tag">Branding</span>
+      <span class="about-tag">Content creation</span>
+      <span class="about-tag">Community</span>
+      <span class="about-tag">Storytelling</span>
+      <span class="about-tag">Campaigns</span>
+    </div>
+  </div>
+  <div class="about-visual">
+    <div class="about-card rose-bg">
+      <div class="about-card-label">Currently at</div>
+      <div class="about-card-val">UBC Sauder School of Business</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-label">Focused on</div>
+      <div class="about-card-val">Marketing — strategy, brand, content</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-label">Outside of work</div>
+      <div class="about-card-val">New cafés & travel planning</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-label">Currently building</div>
+      <div class="about-card-val">This portfolio — one piece at a time</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label" style="display:inline-block;margin-bottom:24px;">Get in touch</div>
+  <h2>Let's make<br><em>something good.</em></h2>
+  <p>Open to internships, collaborations, and conversations about marketing, brands, and ideas worth building.</p>
+  <div class="contact-links">
+    <a href="mailto:samairaaima07@gmail.com" class="contact-btn btn-primary">Email me →</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank" class="contact-btn btn-outline">LinkedIn ↗</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
