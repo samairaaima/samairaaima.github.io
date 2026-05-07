@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bomba — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6;
+    --cream: #F5EFE6;
+    --rose: #F2DDE0;
+    --rose-mid: #C4818A;
+    --yellow: #F7EEB8;
+    --yellow-dark: #7A6300;
+    --terracotta: #F5E6D3;
+    --terra-dark: #8C5E2A;
+    --terra-mid: #C4956A;
+    --ink: #2C2519;
+    --muted: #7A6B5A;
+    --border: #E8DDD0;
+    --light-text: #B0A090;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .article-header { padding: 80px 64px 48px; max-width: 800px; margin: 0 auto; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); text-decoration: none; margin-bottom: 40px; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+  .article-tag { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--yellow); color: var(--yellow-dark); padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+  .article-header h1 { font-family: 'Playfair Display', serif; font-size: 42px; line-height: 1.15; color: var(--ink); margin-bottom: 16px; }
+  .article-meta { font-size: 13px; color: var(--light-text); letter-spacing: 0.04em; }
+  .article-body { max-width: 680px; margin: 0 auto; padding: 0 64px 80px; }
+  .context-block { background: var(--cream); border-left: 2px solid var(--terra-mid); padding: 24px 28px; border-radius: 0 8px 8px 0; margin-bottom: 48px; }
+  .context-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra-mid); margin-bottom: 10px; }
+  .context-block p { font-size: 14px; color: var(--muted); line-height: 1.8; }
+  .divider { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+  .divider span { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-text); white-space: nowrap; }
+  .divider::before, .divider::after { content: ''; display: block; height: 0.5px; background: var(--border); flex: 1; }
+  .prose p { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 20px; }
+  .prose p:last-child { margin-bottom: 0; }
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .article-header { padding: 48px 24px 36px; }
+    .article-header h1 { font-size: 30px; }
+    .article-body { padding: 0 24px 60px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Samaira Aima</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <a href="writing.html" class="back-link">← Back to writing</a>
+  <div class="article-tag">Press Release</div>
+  <h1>When Feast Meets Fiesta: Dine on Tacos, Pizzas, and Pastas at Bomba</h1>
+  <p class="article-meta">Stanley Communications, New Delhi</p>
+</div>
+
+<div class="article-body">
+
+  <div class="context-block">
+    <div class="context-label">My take</div>
+    <p>Bomba was a different experience entirely. Before the launch, I actually got to visit, sat with the founders, walked the space, and tried a few drinks off the menu. The brief here wasn't about imagining a feeling from scratch. It was about capturing one that was already in the room. The energy of Bomba was loud, colorful, and unapologetically fun, and the challenge was making sure the writing matched that without overdoing it. This one taught me that sometimes the hardest part isn't finding the story. It's keeping up with it.</p>
+  </div>
+
+  <div class="divider"><span>The work</span></div>
+
+  <div class="prose">
+    <p>Once upon a flavourful feast, a taqueria met a pizzeria, and Bomba was born. Serving the choicest pizzas, tacos, and handcrafted pastas, Bomba is located at The Gallery, MG Road, serving the best of both worlds.</p>
+    <p>Founders Alisha Mehra Naidu and Kula Naidu began Bomba with a simple thought: a love for pizzas, tacos, creating cool menus, and feeding their friends. Speaking about the launch, the duo said, "With our out-of-the-box concept, we have created menus that are inventive, experimental, and BOMBAstic while still staying true to the dishes and where they come from. Bring your family, friends and puppies too and unwind in our multicoloured, multicultural world as we bring you the best of our favourites."</p>
+    <p>Nestled on soft, pillowy flour tortillas, tacos remain a speciality at Bomba, served with traditional and modern fillings, perfectly poured with fresh, innovative salsas and sizzling hot sauces. Pastas are freshly hand-rolled and plated to perfection at the restaurant's pasta bar, while pizza lovers can enjoy a selection of 12 classic Neapolitan or wafer-thin crust pizzas.</p>
+    <p>Must-haves at Bomba include "The Hottie" pizza, "The Fab Four" 10-hour pork ragu pappardelle, vodka-battered fish tacos, and pulled pork carnitas, which have quickly become popular favourites. To complement the flavours, the in-house beverage selection offers refreshing choices such as guava and elderflower, kaffir lime ginger ale, and litchi passion fruit concoctions. The tempting skillet cookie and s'mores are the perfect end to the meal, fully satiating the sweet tooth.</p>
+    <p>Translating to "the bomb" or "explosive" in both Italian and Spanish, Bomba's title signifies its cool demeanor. Enjoy a vibrant, colorful, and lively ambience at Bomba — watch chefs create magic with an open-plan pizza kitchen while cozying up indoors. Indulge in the wintry ambiance as you place an order for a meticulously brewed steaming cup of coffee, perfectly crafted to warm your senses. The eatery is open every day from 12:00 PM to 11:00 PM.</p>
+    <p>Step into the inviting interior of this unique restaurant, where the white, neutral palette sets a serene backdrop. The walls, adorned in a tasteful off-white hue, come alive with vibrant bursts of color that make the space pop. Delightful paintings of the lush jungle and animals, rendered in soft pastel tones, transport you to a whimsical world. Minimalist decor adorns the walls, adding a touch of modernity and simplicity to the ambiance. As you take a seat, you'll sink into the comfortable wooden and straw seating, which provides a rustic yet cozy atmosphere. The unfinished roof exudes a charming rustic vibe, perfectly complementing the overall aesthetic. With a calm and relaxing ambiance accompanied by feel-good tunes, this restaurant is designed to attract a younger crowd seeking a memorable and enjoyable dining experience.</p>
+    <p>Inviting patrons to make memories over tasteful Mexican and Italian cuisine, Bomba brings forth an unmissable tasteful travelogue.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
