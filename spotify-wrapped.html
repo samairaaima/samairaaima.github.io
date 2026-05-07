@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify Wrapped — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6;
+    --cream: #F5EFE6;
+    --rose: #F2DDE0;
+    --rose-mid: #C4818A;
+    --yellow: #F7EEB8;
+    --yellow-dark: #7A6300;
+    --terracotta: #F5E6D3;
+    --terra-dark: #8C5E2A;
+    --terra-mid: #C4956A;
+    --ink: #2C2519;
+    --muted: #7A6B5A;
+    --border: #E8DDD0;
+    --light-text: #B0A090;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .article-header { padding: 80px 64px 48px; max-width: 800px; margin: 0 auto; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); text-decoration: none; margin-bottom: 40px; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+  .article-tag { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--rose); color: #8C3A45; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+  .article-header h1 { font-family: 'Playfair Display', serif; font-size: 42px; line-height: 1.15; color: var(--ink); margin-bottom: 16px; }
+  .article-meta { font-size: 13px; color: var(--light-text); letter-spacing: 0.04em; }
+  .article-body { max-width: 680px; margin: 0 auto; padding: 0 64px 80px; }
+  .context-block { background: var(--cream); border-left: 2px solid var(--terra-mid); padding: 24px 28px; border-radius: 0 8px 8px 0; margin-bottom: 48px; }
+  .context-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra-mid); margin-bottom: 10px; }
+  .context-block p { font-size: 14px; color: var(--muted); line-height: 1.8; }
+  .divider { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+  .divider span { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-text); white-space: nowrap; }
+  .divider::before, .divider::after { content: ''; display: block; height: 0.5px; background: var(--border); flex: 1; }
+  .prose p { font-size: 16px; color: var(--muted); line-height: 1.9; margin-bottom: 24px; }
+  .prose p.pull { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--ink); line-height: 1.5; font-style: italic; border-left: 2px solid var(--rose-mid); padding-left: 24px; margin: 40px 0; }
+  .prose p:last-child { margin-bottom: 0; }
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .article-header { padding: 48px 24px 36px; }
+    .article-header h1 { font-size: 30px; }
+    .article-body { padding: 0 24px 60px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Samaira Aima</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="article-header">
+  <a href="writing.html" class="back-link">← Back to writing</a>
+  <div class="article-tag">Campaign Breakdown</div>
+  <h1>Spotify Wrapped: The Smartest Gift Spotify Ever Gave You</h1>
+  <p class="article-meta">Brand campaign analysis — Spotify</p>
+</div>
+
+<div class="article-body">
+
+  <div class="context-block">
+    <div class="context-label">My take</div>
+    <p>I have never had a Spotify account, but every November, Spotify Wrapped still gets my attention. That alone says something. This piece breaks down why Wrapped works so well, even on people who do not use the app.</p>
+  </div>
+
+  <div class="divider"><span>The breakdown</span></div>
+
+  <div class="prose">
+    <p>Every November, the internet collectively loses its mind over a feature that has been doing the same thing for years. And yet somehow, it works every single time.</p>
+
+    <p>Spotify Wrapped is Spotify's annual year-end campaign where the platform takes each user's listening data and turns it into a personalized visual story: your top artists, your top songs, your most-played genres, and the music personality you apparently became that year.</p>
+
+    <p>It sounds simple because it is. That is exactly the point.</p>
+
+    <p class="pull">What Spotify did was take data it already had and give it back to the user as a gift.</p>
+
+    <p>But here is what most people miss when they talk about why Wrapped works: it is not just about personalization. Every app personalizes something now. What Spotify did differently was take data it already had, data it was already using internally to improve the user experience, and give it back to the user as a gift.</p>
+
+    <p>They turned cold analytics into something emotional.</p>
+
+    <p>Your music taste feels tied to your identity, so seeing it reflected back to you does not feel like receiving a data report. It feels like being seen.</p>
+
+    <p>And then something even more powerful happens: people share it.</p>
+
+    <p>Not because Spotify forces them to. Not because there is a discount code or an incentive. They share it because posting your Wrapped feels like sharing a piece of yourself. Every person who uploads their Wrapped is doing Spotify's marketing for them, completely voluntarily, to their entire following.</p>
+
+    <p>I do not even use Spotify. I am an Apple Music person. And still, every year when Wrapped season hits, I find myself paying attention. I get curious. I wonder what mine would say if I had one.</p>
+
+    <p>That is how strong the concept is. It transcends the product itself.</p>
+
+    <p class="pull">The best marketing does not feel like marketing at all. It feels like a gift.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
