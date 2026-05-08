@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which Brand Are You? — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6;
+    --cream: #F5EFE6;
+    --rose: #F2DDE0;
+    --rose-mid: #C4818A;
+    --yellow: #F7EEB8;
+    --terra-mid: #C4956A;
+    --ink: #2C2519;
+    --muted: #7A6B5A;
+    --border: #E8DDD0;
+    --light-text: #B0A090;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); min-height: 100vh; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .quiz-wrap { max-width: 720px; margin: 0 auto; padding: 80px 48px; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); text-decoration: none; margin-bottom: 48px; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+  .quiz-header { margin-bottom: 56px; }
+  .quiz-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-mid); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .quiz-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--terra-mid); }
+  .quiz-header h1 { font-family: 'Playfair Display', serif; font-size: 48px; line-height: 1.1; margin-bottom: 16px; }
+  .quiz-header h1 em { font-style: italic; color: var(--rose-mid); }
+  .quiz-header p { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 480px; }
+  .progress-bar { height: 2px; background: var(--border); border-radius: 2px; margin-bottom: 48px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--rose-mid); border-radius: 2px; transition: width 0.4s ease; }
+  .progress-text { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); margin-bottom: 12px; }
+  .question-block { display: none; animation: fadeIn 0.4s ease; }
+  .question-block.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .question-text { font-family: 'Playfair Display', serif; font-size: 28px; line-height: 1.3; margin-bottom: 32px; color: var(--ink); }
+  .options { display: flex; flex-direction: column; gap: 12px; }
+  .option-btn { background: #fff; border: 0.5px solid var(--border); border-radius: 12px; padding: 18px 24px; text-align: left; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--muted); line-height: 1.5; transition: all 0.2s; }
+  .option-btn:hover { border-color: var(--rose-mid); color: var(--ink); background: var(--rose); transform: translateX(4px); }
+  .option-btn.selected { border-color: var(--rose-mid); background: var(--rose); color: var(--ink); }
+  .result-block { display: none; animation: fadeIn 0.5s ease; }
+  .result-block.active { display: block; }
+  .result-tag { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-mid); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .result-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--terra-mid); }
+  .result-brand { font-family: 'Playfair Display', serif; font-size: 56px; line-height: 1; margin-bottom: 8px; }
+  .result-tagline { font-size: 14px; color: var(--light-text); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 32px; }
+  .result-card { background: #fff; border: 0.5px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 32px; }
+  .result-emoji { font-size: 40px; margin-bottom: 16px; }
+  .result-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+  .result-traits { display: flex; flex-wrap: wrap; gap: 8px; }
+  .trait { background: var(--cream); border: 0.5px solid var(--border); border-radius: 20px; padding: 6px 16px; font-size: 12px; color: var(--muted); }
+  .result-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-retake { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 40px; font-size: 14px; cursor: pointer; font-family: 'DM Sans', sans-serif; border: 1px solid var(--border); color: var(--muted); background: transparent; transition: all 0.2s; }
+  .btn-retake:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-share { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 40px; font-size: 14px; cursor: pointer; font-family: 'DM Sans', sans-serif; background: var(--ink); color: var(--warm-white); border: none; transition: all 0.2s; }
+  .btn-share:hover { background: #4A3E2E; }
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; margin-top: 80px; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .quiz-wrap { padding: 48px 24px; }
+    .quiz-header h1 { font-size: 36px; }
+    .result-brand { font-size: 40px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Samaira Aima</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="quiz-wrap">
+  <a href="index.html" class="back-link">Back to home</a>
+
+  <div class="quiz-header">
+    <div class="quiz-label">Interactive</div>
+    <h1>Which brand<br><em>are you?</em></h1>
+    <p>Six questions. Six brands. A surprisingly accurate read on your personality, at least according to me.</p>
+  </div>
+
+  <div id="quiz-container">
+    <div class="progress-text" id="progress-text">Question 1 of 6</div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:16.6%"></div></div>
+
+    <!-- Q1 -->
+    <div class="question-block active" id="q1">
+      <div class="question-text">Your ideal Saturday morning looks like:</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(1,'glossier')">Slow morning, day in bed, skincare, nothing on the agenda</button>
+        <button class="option-btn" onclick="answer(1,'apple')">Up early and ticking things off your to-do list</button>
+        <button class="option-btn" onclick="answer(1,'jacquemus')">Something spontaneous, leave the house and figure out the rest</button>
+        <button class="option-btn" onclick="answer(1,'zara')">Coffee and a workout, you start the day moving</button>
+        <button class="option-btn" onclick="answer(1,'chanel')">Spending the day with your people</button>
+        <button class="option-btn" onclick="answer(1,'rhode')">Solo date, just you and wherever the day takes you</button>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-block" id="q2">
+      <div class="question-text">How do you make decisions?</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(2,'apple')">Research, compare, decide. You trust your process</button>
+        <button class="option-btn" onclick="answer(2,'zara')">Gut feeling, mostly. If it feels right, it probably is</button>
+        <button class="option-btn" onclick="answer(2,'chanel')">You take your time. Quality over speed, always</button>
+        <button class="option-btn" onclick="answer(2,'glossier')">You ask people you trust and go from there</button>
+        <button class="option-btn" onclick="answer(2,'jacquemus')">Instinct first, logic later. You figure it out as you go</button>
+        <button class="option-btn" onclick="answer(2,'rhode')">You simplify until the answer is obvious</button>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-block" id="q3">
+      <div class="question-text">Pick a word that feels most like you:</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(3,'glossier')">Warm</button>
+        <button class="option-btn" onclick="answer(3,'zara')">Sharp</button>
+        <button class="option-btn" onclick="answer(3,'chanel')">Outgoing</button>
+        <button class="option-btn" onclick="answer(3,'rhode')">Quiet</button>
+        <button class="option-btn" onclick="answer(3,'apple')">Intentional</button>
+        <button class="option-btn" onclick="answer(3,'jacquemus')">Surprising</button>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-block" id="q4">
+      <div class="question-text">Your approach to getting dressed is:</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(4,'rhode')">Minimal. You wear clean pieces and it always works</button>
+        <button class="option-btn" onclick="answer(4,'zara')">Trend-aware. You know what is happening and you keep up</button>
+        <button class="option-btn" onclick="answer(4,'chanel')">Investment and timeless pieces only. Fewer, better things</button>
+        <button class="option-btn" onclick="answer(4,'glossier')">Effortless. You look put together without trying too hard</button>
+        <button class="option-btn" onclick="answer(4,'jacquemus')">A statement. Getting dressed is creative expression</button>
+        <button class="option-btn" onclick="answer(4,'apple')">Functional over fashion first, but everything has to work together</button>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-block" id="q5">
+      <div class="question-text">What do you want people to feel when they meet you?</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(5,'glossier')">Comfortable. Like they can be themselves around you</button>
+        <button class="option-btn" onclick="answer(5,'chanel')">Impressed. Not in an obvious way, just quietly</button>
+        <button class="option-btn" onclick="answer(5,'jacquemus')">Intrigued. You want to leave them thinking more about you</button>
+        <button class="option-btn" onclick="answer(5,'apple')">Confident. You know what you are about</button>
+        <button class="option-btn" onclick="answer(5,'rhode')">At ease. No performance, no noise</button>
+        <button class="option-btn" onclick="answer(5,'zara')">Aware. You are plugged in and it shows</button>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-block" id="q6">
+      <div class="question-text">Your relationship with social media is:</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(6,'glossier')">You share when it feels genuine. Community over clout</button>
+        <button class="option-btn" onclick="answer(6,'zara')">You are on it constantly, it is where culture happens</button>
+        <button class="option-btn" onclick="answer(6,'chanel')">Selective. You curate carefully and post rarely</button>
+        <button class="option-btn" onclick="answer(6,'rhode')">Minimal. You prefer real life</button>
+        <button class="option-btn" onclick="answer(6,'apple')">Strategic. Everything you post has a purpose</button>
+        <button class="option-btn" onclick="answer(6,'jacquemus')">A mood board. You post what inspires you, aesthetics first</button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-block" id="result">
+      <div class="result-tag">Your result</div>
+      <div class="result-brand" id="result-brand"></div>
+      <div class="result-tagline" id="result-tagline"></div>
+      <div class="result-card">
+        <div class="result-emoji" id="result-emoji"></div>
+        <div class="result-desc" id="result-desc"></div>
+        <div class="result-traits" id="result-traits"></div>
+      </div>
+      <div class="result-actions">
+        <button class="btn-retake" onclick="retake()">Retake the quiz</button>
+        <button class="btn-share" onclick="shareResult()">Share your result</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+const scores = { glossier: 0, zara: 0, chanel: 0, rhode: 0, apple: 0, jacquemus: 0 };
+let currentQ = 1;
+const totalQ = 6;
+
+const results = {
+  glossier: {
+    name: "Glossier",
+    tagline: "You make people feel seen",
+    emoji: "🌸",
+    desc: "You lead with warmth and realness. You are not trying to impress anyone, you just manage to, and somehow that is more magnetic than anything rehearsed. People trust you. You build things around community, not performance. Glossier did not build a beauty brand. They built a feeling of belonging. So did you.",
+    traits: ["Warm", "Community-first", "Effortlessly cool", "Authentic", "Trusted"]
+  },
+  zara: {
+    name: "Zara",
+    tagline: "You move fast and you are usually right",
+    emoji: "🖤",
+    desc: "You are plugged in. You see trends before they are trends, and you act on them before most people have even noticed. You are decisive, sharp, and culturally aware. Zara does not wait for the perfect moment, they just move. Neither do you. That is not recklessness. That is instinct.",
+    traits: ["Trend-aware", "Fast-moving", "Sharp", "Culturally tuned", "Decisive"]
+  },
+  chanel: {
+    name: "Chanel",
+    tagline: "You play a long game",
+    emoji: "🕊️",
+    desc: "You are not interested in what is happening right now. You are interested in what will still matter in ten years. You have standards, not because you are difficult, but because you know the difference between good and great. Chanel has stayed iconic for over a century by knowing exactly what it stands for. You do too.",
+    traits: ["Timeless", "Discerning", "Quietly confident", "Standards-driven", "Classic"]
+  },
+  rhode: {
+    name: "Rhode",
+    tagline: "You edit until it is just right",
+    emoji: "🤍",
+    desc: "You strip everything back to what actually matters. No noise, no excess. You are not minimalist for the aesthetic, you genuinely believe that less, done well, is everything. Rhode built a brand on the idea that one great product beats ten average ones. You operate the same way.",
+    traits: ["Minimal", "Intentional", "Clean", "Calm"]
+  },
+  apple: {
+    name: "Apple",
+    tagline: "You have a system and it works",
+    emoji: "🍎",
+    desc: "You are precise, purposeful, and confident. You do not need to explain yourself, the work does it. You think in systems. Everything connects. Apple does not sell products, they sell a way of living and working. You have a clear point of view, and you stick to it. People notice.",
+    traits: ["Precise", "Strategic", "Confident", "Systems thinker"]
+  },
+  jacquemus: {
+    name: "Jacquemus",
+    tagline: "You make the ordinary feel like an event",
+    emoji: "🌾",
+    desc: "You are creative, spontaneous, and a little unexpected. You see possibility in ordinary things and you know how to make moments feel special without trying too hard. Jacquemus built a luxury brand in lavender fields with picnic shows and tiny bags. You bring that same energy, playful, dreamy, and always a little surprising.",
+    traits: ["Creative", "Spontaneous", "Playful", "Aesthetic", "Surprising"]
+  }
+};
+
+function answer(qNum, brand) {
+  scores[brand]++;
+  const btns = document.querySelectorAll(`#q${qNum} .option-btn`);
+  btns.forEach(b => b.classList.remove('selected'));
+  event.target.classList.add('selected');
+  setTimeout(() => {
+    if (qNum < totalQ) {
+      document.getElementById(`q${qNum}`).classList.remove('active');
+      currentQ = qNum + 1;
+      document.getElementById(`q${currentQ}`).classList.add('active');
+      document.getElementById('progress-text').textContent = `Question ${currentQ} of ${totalQ}`;
+      document.getElementById('progress-fill').style.width = `${(currentQ / totalQ) * 100}%`;
+    } else {
+      showResult();
+    }
+  }, 400);
+}
+
+function showResult() {
+  document.getElementById(`q${totalQ}`).classList.remove('active');
+  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('progress-text').textContent = 'Your result';
+  const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+  const r = results[winner];
+  document.getElementById('result-brand').textContent = r.name;
+  document.getElementById('result-tagline').textContent = r.tagline;
+  document.getElementById('result-emoji').textContent = r.emoji;
+  document.getElementById('result-desc').textContent = r.desc;
+  const traitsEl = document.getElementById('result-traits');
+  traitsEl.innerHTML = r.traits.map(t => `<span class="trait">${t}</span>`).join('');
+  document.getElementById('result').classList.add('active');
+}
+
+function retake() {
+  Object.keys(scores).forEach(k => scores[k] = 0);
+  currentQ = 1;
+  document.querySelectorAll('.question-block').forEach(q => q.classList.remove('active'));
+  document.getElementById('result').classList.remove('active');
+  document.getElementById('q1').classList.add('active');
+  document.getElementById('progress-text').textContent = 'Question 1 of 6';
+  document.getElementById('progress-fill').style.width = '16.6%';
+  document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+}
+
+function shareResult() {
+  const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+  const r = results[winner];
+  const text = `I took the brand personality quiz on Samaira's portfolio and I am ${r.name}. "${r.tagline}" samairaaima.github.io/quiz.html`;
+  if (navigator.share) {
+    navigator.share({ text });
+  } else {
+    navigator.clipboard.writeText(text);
+    alert('Copied to clipboard!');
+  }
+}
+</script>
+
+</body>
+</html>
