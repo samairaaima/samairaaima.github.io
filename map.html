@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>19 Countries — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6;
+    --cream: #F5EFE6;
+    --rose: #F2DDE0;
+    --rose-mid: #C4818A;
+    --terra-mid: #C4956A;
+    --terracotta: #F5E6D3;
+    --ink: #2C2519;
+    --muted: #7A6B5A;
+    --border: #E8DDD0;
+    --light-text: #B0A090;
+    --passport-bg: #F5EFE6;
+    --passport-gold: #F5EFE6;
+    --stamp-red: #C4818A;
+    --stamp-blue: #8C5E2A;
+    --stamp-purple: #7A6B5A;
+    --stamp-green: #B0A090;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); min-height: 100vh; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 80px 48px; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); text-decoration: none; margin-bottom: 48px; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+
+  .page-header { margin-bottom: 56px; }
+  .page-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-mid); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .page-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--terra-mid); }
+  .page-header h1 { font-family: 'Playfair Display', serif; font-size: 48px; line-height: 1.1; margin-bottom: 16px; }
+  .page-header h1 em { font-style: italic; color: var(--rose-mid); }
+  .page-header p { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 480px; }
+
+  /* PASSPORT */
+  .passport-book {
+    background: var(--passport-bg);
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 64px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(44,37,25,0.08);
+  }
+
+  .passport-cover-text {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E8DDD0;
+  }
+
+  .passport-cover-text .passport-title {
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2C2519;
+    margin-bottom: 6px;
+  }
+
+  .passport-cover-text .passport-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #2C2519;
+    margin-bottom: 4px;
+  }
+
+  .passport-cover-text .passport-count {
+    font-family: 'Special Elite', monospace;
+    font-size: 12px;
+    color: #B0A090;
+    letter-spacing: 0.1em;
+  }
+
+  /* STAMPS GRID */
+  .stamps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .stamp {
+    border-radius: 4px;
+    padding: 14px 12px;
+    position: relative;
+    cursor: default;
+    transition: transform 0.2s;
+  }
+
+  .stamp:hover { transform: scale(1.03) rotate(0.5deg); }
+
+  .stamp::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1.5px dashed rgba(255,255,255,0.25);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  .stamp.red { background: var(--stamp-red); transform: rotate(-1.5deg); }
+  .stamp.blue { background: var(--stamp-blue); transform: rotate(1deg); }
+  .stamp.purple { background: var(--stamp-purple); transform: rotate(-0.5deg); }
+  .stamp.green { background: var(--stamp-green); transform: rotate(1.5deg); }
+  .stamp.darkred { background: #8C3A45; transform: rotate(-1deg); }
+  .stamp.navy { background: #C4956A; transform: rotate(0.5deg); }
+  .stamp.olive { background: #7A6B5A; transform: rotate(-1.5deg); }
+  .stamp.teal { background: #2C2519; transform: rotate(1deg); }
+
+  .stamp:hover { transform: scale(1.05) rotate(0deg) !important; }
+
+  .stamp-flag { font-size: 22px; margin-bottom: 6px; display: block; }
+  .stamp-country { font-family: 'Special Elite', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 4px; }
+  .stamp-vibe { font-size: 10px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+
+  /* COUNTER */
+  .counter { display: inline-flex; align-items: center; gap: 12px; background: var(--terracotta); border-radius: 40px; padding: 10px 20px; margin-bottom: 48px; }
+  .counter-num { font-family: 'Playfair Display', serif; font-size: 24px; color: #8C5E2A; }
+  .counter-label { font-size: 13px; color: #8C5E2A; }
+
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; margin-top: 80px; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--ink); }
+
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .page-wrap { padding: 48px 24px; }
+    .page-header h1 { font-size: 36px; }
+    .stamps-grid { grid-template-columns: repeat(2, 1fr); }
+    .passport-book { padding: 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Samaira Aima</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <a href="index.html" class="back-link">Back to home</a>
+
+  <div class="page-header">
+    <div class="page-label">Passport stamps</div>
+    <h1>19 countries<br><em>and counting.</em></h1>
+    <p>Every trip has left something behind. A feeling, a memory, a craving, or just a city I keep thinking about.</p>
+  </div>
+
+  <div class="counter">
+    <span class="counter-num">19</span>
+    <span class="counter-label">countries visited</span>
+  </div>
+
+  <div class="passport-book">
+    <div class="passport-cover-text">
+      <div class="passport-title">Travel Document</div>
+      <div class="passport-name">Samaira Aima</div>
+      <div class="passport-count">19 stamps collected</div>
+    </div>
+
+    <div class="stamps-grid">
+
+      <div class="stamp red">
+        <span class="stamp-flag">🇺🇸</span>
+        <div class="stamp-country">USA</div>
+        <div class="stamp-vibe">Stayed at Lotte New York Palace. The real-life Palace Hotel from Gossip Girl. Obsessed does not cover it.</div>
+      </div>
+
+      <div class="stamp blue">
+        <span class="stamp-flag">🇬🇧</span>
+        <div class="stamp-country">United Kingdom</div>
+        <div class="stamp-vibe">London is my second home.</div>
+      </div>
+
+      <div class="stamp darkred">
+        <span class="stamp-flag">🇨🇦</span>
+        <div class="stamp-country">Canada</div>
+        <div class="stamp-vibe">Home of UBC. Where everything changed.</div>
+      </div>
+
+      <div class="stamp navy">
+        <span class="stamp-flag">🇦🇪</span>
+        <div class="stamp-country">UAE</div>
+        <div class="stamp-vibe">A city that never stops building itself.</div>
+      </div>
+
+      <div class="stamp green">
+        <span class="stamp-flag">🇹🇭</span>
+        <div class="stamp-country">Thailand</div>
+        <div class="stamp-vibe">Memorable holiday with cousins. Would go back tomorrow.</div>
+      </div>
+
+      <div class="stamp red">
+        <span class="stamp-flag">🇸🇬</span>
+        <div class="stamp-country">Singapore</div>
+        <div class="stamp-vibe">Family lives here. Always feels like a second home.</div>
+      </div>
+
+      <div class="stamp blue">
+        <span class="stamp-flag">🇬🇷</span>
+        <div class="stamp-country">Greece</div>
+        <div class="stamp-vibe">Insanely beautiful. Perfect party place.</div>
+      </div>
+
+      <div class="stamp purple">
+        <span class="stamp-flag">🇭🇷</span>
+        <div class="stamp-country">Croatia</div>
+        <div class="stamp-vibe">Coastal, crystal clear, and cinematic.</div>
+      </div>
+
+      <div class="stamp olive">
+        <span class="stamp-flag">🇲🇨</span>
+        <div class="stamp-country">Monaco</div>
+        <div class="stamp-vibe">Tiny country, big energy.</div>
+      </div>
+
+      <div class="stamp darkred">
+        <span class="stamp-flag">🇫🇷</span>
+        <div class="stamp-country">France</div>
+        <div class="stamp-vibe">Everything they say about it is true.</div>
+      </div>
+
+      <div class="stamp teal">
+        <span class="stamp-flag">🇨🇭</span>
+        <div class="stamp-country">Switzerland</div>
+        <div class="stamp-vibe">The chocolate and the snow. Both extraordinary.</div>
+      </div>
+
+      <div class="stamp green">
+        <span class="stamp-flag">🇵🇹</span>
+        <div class="stamp-country">Portugal</div>
+        <div class="stamp-vibe">Underrated and unforgettable.</div>
+      </div>
+
+      <div class="stamp navy">
+        <span class="stamp-flag">🇫🇮</span>
+        <div class="stamp-country">Finland</div>
+        <div class="stamp-vibe">Quiet, cold, and strangely calming.</div>
+      </div>
+
+      <div class="stamp blue">
+        <span class="stamp-flag">🇪🇪</span>
+        <div class="stamp-country">Estonia</div>
+        <div class="stamp-vibe">Medieval old town, modern energy.</div>
+      </div>
+
+      <div class="stamp red">
+        <span class="stamp-flag">🇧🇦</span>
+        <div class="stamp-country">Bosnia</div>
+        <div class="stamp-vibe">Unexpected and deeply beautiful.</div>
+      </div>
+
+      <div class="stamp purple">
+        <span class="stamp-flag">🇶🇦</span>
+        <div class="stamp-country">Qatar</div>
+        <div class="stamp-vibe">Stopover that turned into more.</div>
+      </div>
+
+      <div class="stamp teal">
+        <span class="stamp-flag">🇹🇷</span>
+        <div class="stamp-country">Turkey</div>
+        <div class="stamp-vibe">Where East meets West, literally.</div>
+      </div>
+
+      <div class="stamp olive">
+        <span class="stamp-flag">🇮🇹</span>
+        <div class="stamp-country">Italy</div>
+        <div class="stamp-vibe">Art, pasta, and chaos in the best way.</div>
+      </div>
+
+      <div class="stamp darkred">
+        <span class="stamp-flag">🇪🇸</span>
+        <div class="stamp-country">Spain</div>
+        <div class="stamp-vibe">Sun, food, and staying out too late.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
