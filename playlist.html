@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playlist — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6;
+    --cream: #F5EFE6;
+    --rose: #F2DDE0;
+    --rose-mid: #C4818A;
+    --yellow: #F7EEB8;
+    --terra-mid: #C4956A;
+    --ink: #2C2519;
+    --muted: #7A6B5A;
+    --border: #E8DDD0;
+    --light-text: #B0A090;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); min-height: 100vh; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  .page-wrap { max-width: 800px; margin: 0 auto; padding: 80px 48px; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); text-decoration: none; margin-bottom: 48px; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+
+  .page-header { margin-bottom: 64px; }
+  .page-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-mid); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .page-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--terra-mid); }
+  .page-header h1 { font-family: 'Playfair Display', serif; font-size: 48px; line-height: 1.1; margin-bottom: 16px; }
+  .page-header h1 em { font-style: italic; color: var(--rose-mid); }
+  .page-header p { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 480px; }
+
+  .vibe-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .vibe-tag { background: var(--cream); border: 0.5px solid var(--border); border-radius: 20px; padding: 6px 16px; font-size: 12px; color: var(--muted); }
+
+  .playlist-list { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+
+  .track {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 0.5px solid var(--border);
+    transition: background 0.15s;
+    cursor: default;
+  }
+
+  .track:hover { background: var(--cream); margin: 0 -48px; padding: 16px 48px; }
+  .track:first-child { border-top: 0.5px solid var(--border); }
+
+  .track-num { font-size: 13px; color: var(--light-text); font-family: 'Playfair Display', serif; font-style: italic; text-align: center; }
+  .track-info {}
+  .track-name { font-size: 15px; color: var(--ink); font-weight: 500; margin-bottom: 3px; }
+  .track-artist { font-size: 13px; color: var(--muted); }
+  .track-vibe { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); white-space: nowrap; }
+
+  .section-divider { display: flex; align-items: center; gap: 16px; margin: 48px 0 32px; }
+  .section-divider span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-text); white-space: nowrap; }
+  .section-divider::before, .section-divider::after { content: ''; display: block; height: 0.5px; background: var(--border); flex: 1; }
+
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; margin-top: 80px; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--ink); }
+
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .page-wrap { padding: 48px 24px; }
+    .page-header h1 { font-size: 36px; }
+    .track:hover { margin: 0 -24px; padding: 16px 24px; }
+    .track-vibe { display: none; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Samaira Aima</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <a href="index.html" class="back-link">Back to home</a>
+
+  <div class="page-header">
+    <div class="page-label">Currently playing</div>
+    <h1>What I listen to<br><em>while I work.</em></h1>
+    <p>Current beats getting me through a brief, a deadline, or a slow afternoon. These are the ones that always make the cut.</p>
+
+  </div>
+
+  <div class="playlist-list">
+
+    <div class="track">
+      <span class="track-num">1</span>
+      <div class="track-info">
+        <div class="track-name">Addicted To You</div>
+        <div class="track-artist">Avicii</div>
+      </div>
+      <span class="track-vibe">Forever classic</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">2</span>
+      <div class="track-info">
+        <div class="track-name">After Party</div>
+        <div class="track-artist">Don Toliver</div>
+      </div>
+      <span class="track-vibe">Late night</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">3</span>
+      <div class="track-info">
+        <div class="track-name">Alors on danse</div>
+        <div class="track-artist">Stromae</div>
+      </div>
+      <span class="track-vibe">No genre loyalty</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">4</span>
+      <div class="track-info">
+        <div class="track-name">Attention</div>
+        <div class="track-artist">Charlie Puth</div>
+      </div>
+      <span class="track-vibe">Earworm</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">5</span>
+      <div class="track-info">
+        <div class="track-name">Clarity</div>
+        <div class="track-artist">Zedd</div>
+      </div>
+      <span class="track-vibe">Focus mode</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">6</span>
+      <div class="track-info">
+        <div class="track-name">BIRDS OF A FEATHER</div>
+        <div class="track-artist">Billie Eilish</div>
+      </div>
+      <span class="track-vibe">Slow burn</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">7</span>
+      <div class="track-info">
+        <div class="track-name">Blinding Lights</div>
+        <div class="track-artist">The Weeknd</div>
+      </div>
+      <span class="track-vibe">Never gets old</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">8</span>
+      <div class="track-info">
+        <div class="track-name">Can't Feel My Face</div>
+        <div class="track-artist">The Weeknd</div>
+      </div>
+      <span class="track-vibe">Energy up</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">9</span>
+      <div class="track-info">
+        <div class="track-name">Circles</div>
+        <div class="track-artist">Post Malone</div>
+      </div>
+      <span class="track-vibe">Easy listen</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">10</span>
+      <div class="track-info">
+        <div class="track-name">Crossfaded</div>
+        <div class="track-artist">Don Toliver</div>
+      </div>
+      <span class="track-vibe">Vibe</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">11</span>
+      <div class="track-info">
+        <div class="track-name">Cry For Me</div>
+        <div class="track-artist">The Weeknd</div>
+      </div>
+      <span class="track-vibe">New favourite</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">12</span>
+      <div class="track-info">
+        <div class="track-name">Girls Like You</div>
+        <div class="track-artist">Maroon 5</div>
+      </div>
+      <span class="track-vibe">Throwback</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">13</span>
+      <div class="track-info">
+        <div class="track-name">Hold On, We're Going Home</div>
+        <div class="track-artist">Drake ft. Majid Jordan</div>
+      </div>
+      <span class="track-vibe">Feel good</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">14</span>
+      <div class="track-info">
+        <div class="track-name">Heartless</div>
+        <div class="track-artist">Kanye West</div>
+      </div>
+      <span class="track-vibe">Classic</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">15</span>
+      <div class="track-info">
+        <div class="track-name">Lo que siento</div>
+        <div class="track-artist">Cuco</div>
+      </div>
+      <span class="track-vibe">Dreamy</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">16</span>
+      <div class="track-info">
+        <div class="track-name">Yeah Yeah</div>
+        <div class="track-artist">Jaden</div>
+      </div>
+      <span class="track-vibe">Underrated</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">17</span>
+      <div class="track-info">
+        <div class="track-name">Reminder</div>
+        <div class="track-artist">The Weeknd</div>
+      </div>
+      <span class="track-vibe">Late night</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">18</span>
+      <div class="track-info">
+        <div class="track-name">Strip That Down</div>
+        <div class="track-artist">Liam Payne ft. Quavo</div>
+      </div>
+      <span class="track-vibe">Throwback</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">19</span>
+      <div class="track-info">
+        <div class="track-name">Arms Around You</div>
+        <div class="track-artist">XXXTENTACION & Lil Pump</div>
+      </div>
+      <span class="track-vibe">Nostalgic</span>
+    </div>
+
+    <div class="track">
+      <span class="track-num">20</span>
+      <div class="track-info">
+        <div class="track-name">Calling My Phone</div>
+        <div class="track-artist">Lil Tjay & 6LACK</div>
+      </div>
+      <span class="track-vibe">Easy listen</span>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
