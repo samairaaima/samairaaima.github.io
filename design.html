@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6;
+    --cream: #F5EFE6;
+    --rose: #F2DDE0;
+    --rose-dark: #8C3A45;
+    --rose-mid: #C4818A;
+    --yellow: #F7EEB8;
+    --yellow-dark: #7A6300;
+    --terracotta: #F5E6D3;
+    --terra-dark: #8C5E2A;
+    --terra-mid: #C4956A;
+    --ink: #2C2519;
+    --muted: #7A6B5A;
+    --border: #E8DDD0;
+    --light-text: #B0A090;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .page-header { padding: 80px 64px 48px; border-bottom: 0.5px solid var(--border); }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); text-decoration: none; margin-bottom: 40px; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+  .page-header h1 { font-family: 'Playfair Display', serif; font-size: 52px; line-height: 1.1; margin-bottom: 16px; }
+  .page-header h1 em { font-style: italic; color: var(--rose-mid); }
+  .page-header p { font-size: 15px; color: var(--muted); max-width: 480px; line-height: 1.7; }
+  .design-container { padding: 0 64px 80px; }
+  .design-section { padding-top: 64px; }
+  .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 36px; padding-bottom: 16px; border-bottom: 0.5px solid var(--border); }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--ink); }
+  .section-sub { font-size: 12px; color: var(--light-text); letter-spacing: 0.06em; }
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .piece-card { border: 0.5px solid var(--border); border-radius: 14px; overflow: hidden; background: #fff; text-decoration: none; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+  .piece-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(44,37,25,0.08); }
+  .piece-card.dashed { border-style: dashed; }
+  .card-top { height: 140px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; padding: 20px; text-align: center; line-height: 1.4; flex-direction: column; gap: 8px; }
+  .card-top.rose { background: var(--rose); color: var(--rose-dark); }
+  .card-top.yellow { background: var(--yellow); color: var(--yellow-dark); }
+  .card-top.terra { background: var(--terracotta); color: var(--terra-dark); }
+  .card-top.cream { background: var(--cream); color: var(--muted); }
+  .card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+  .card-type { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-text); margin-bottom: 8px; }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+  .card-desc { font-size: 13px; color: var(--muted); line-height: 1.65; flex: 1; }
+  .card-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--terra-mid); border-bottom: 1px solid var(--terra-mid); padding-bottom: 1px; align-self: flex-start; }
+  .card-link.muted { color: var(--light-text); border-color: var(--border); }
+  .coming-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light-text); }
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; margin-top: 80px; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .page-header { padding: 48px 24px 36px; }
+    .page-header h1 { font-size: 36px; }
+    .design-container { padding: 0 24px 60px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Samaira Aima</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <a href="index.html" class="back-link">← Back to home</a>
+  <h1>Marketing<br><em>made visible.</em></h1>
+  <p>Social content, campaign graphics, and visual work. The part of strategy you can actually see and feel.</p>
+</div>
+
+<div class="design-container">
+
+  <!-- OFF THE CLOCK -->
+  <div class="design-section">
+    <div class="section-header">
+      <span class="section-title">Off the clock</span>
+      <span class="section-sub">Personal content</span>
+    </div>
+    <div class="cards-grid">
+      <a href="off-the-clock.html" class="piece-card">
+        <div class="card-top rose">Off the clock</div>
+        <div class="card-body">
+          <div class="card-type">Personal</div>
+          <div class="card-title">The person behind the work</div>
+          <div class="card-desc">Personal graphics, moodboards, and visual work made just for me.</div>
+          <span class="card-link">Explore →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- LIVE WORK -->
+  <div class="design-section">
+    <div class="section-header">
+      <span class="section-title">Live work</span>
+      <span class="section-sub">3 pieces</span>
+    </div>
+    <div class="cards-grid">
+
+      <a href="emp.html" class="piece-card">
+        <div class="card-top yellow">EMP Mentee Applications</div>
+        <div class="card-body">
+          <div class="card-type">Campaign Graphic — EMP UBC CUS</div>
+          <div class="card-title">Mentee Applications Open</div>
+          <div class="card-desc">140+ applicants. The collage aesthetic was intentional — loud enough to stop the scroll.</div>
+          <span class="card-link">See the work →</span>
+        </div>
+      </a>
+
+      <a href="grad-night.html" class="piece-card">
+        <div class="card-top terra">Sauder Grad Night</div>
+        <div class="card-body">
+          <div class="card-type">Event Graphic — Sauder CUS</div>
+          <div class="card-title">Grad Night 2025 Invite</div>
+          <div class="card-desc">An invite for an event worth showing up for. Promotions led to a sold out night.</div>
+          <span class="card-link">See the work →</span>
+        </div>
+      </a>
+
+      <a href="friendsgiving.html" class="piece-card">
+        <div class="card-top rose">Friendsgiving Reel</div>
+        <div class="card-body">
+          <div class="card-type">Video Content — SISA UBC CUS</div>
+          <div class="card-title">Friendsgiving 2024</div>
+          <div class="card-desc">Gossip Girl audio. Gen Z Thanksgiving energy. 12k views.</div>
+          <span class="card-link">See the work →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- BRAND MOCKUPS -->
+  <div class="design-section">
+    <div class="section-header">
+      <span class="section-title">Brand mockups</span>
+      <span class="section-sub">Coming this summer</span>
+    </div>
+    <div class="cards-grid">
+      <div class="piece-card dashed">
+        <div class="card-top cream">
+          Coming soon
+          <span class="coming-tag">Campaign concept</span>
+        </div>
+        <div class="card-body">
+          <div class="card-type">Brand mockup</div>
+          <div class="card-title">In progress</div>
+          <div class="card-desc">A visual direction for a brand campaign I'd want to see.</div>
+          <span class="card-link muted">Coming this summer</span>
+        </div>
+      </div>
+      <div class="piece-card dashed">
+        <div class="card-top cream">
+          Coming soon
+          <span class="coming-tag">Social content</span>
+        </div>
+        <div class="card-body">
+          <div class="card-type">Brand mockup</div>
+          <div class="card-title">In progress</div>
+          <div class="card-desc">A social content direction that hasn't been done yet.</div>
+          <span class="card-link muted">Coming this summer</span>
+        </div>
+      </div>
+      <div class="piece-card dashed">
+        <div class="card-top cream">
+          Coming soon
+          <span class="coming-tag">Campaign concept</span>
+        </div>
+        <div class="card-body">
+          <div class="card-type">Brand mockup</div>
+          <div class="card-title">In progress</div>
+          <div class="card-desc">A campaign built around what makes a brand actually different.</div>
+          <span class="card-link muted">Coming this summer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
