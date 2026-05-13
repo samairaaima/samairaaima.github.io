@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Things I'm Drawn To — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --warm-white: #FDFAF6; --cream: #F5EFE6; --rose: #F2DDE0; --rose-mid: #C4818A; --terra-mid: #C4956A; --ink: #2C2519; --muted: #7A6B5A; --border: #E8DDD0; --light-text: #B0A090; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .page-header { padding: 80px 64px 48px; border-bottom: 0.5px solid var(--border); }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); text-decoration: none; margin-bottom: 40px; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+  .page-header h1 { font-family: 'Playfair Display', serif; font-size: 52px; line-height: 1.1; margin-bottom: 16px; }
+  .page-header h1 em { font-style: italic; color: var(--rose-mid); }
+  .page-header p { font-size: 15px; color: var(--muted); max-width: 480px; line-height: 1.7; }
+  .container { padding: 64px 64px 80px; }
+  .section-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-text); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--terra-mid); }
+  .carousel-section { margin-bottom: 64px; }
+  .carousel-title { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--ink); margin-bottom: 8px; }
+  .carousel-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; max-width: 480px; }
+  .carousel-grid { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .carousel-grid::-webkit-scrollbar { height: 4px; }
+  .carousel-grid::-webkit-scrollbar-track { background: var(--cream); border-radius: 2px; }
+  .carousel-grid::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .carousel-grid img { flex-shrink: 0; width: 72%; border-radius: 10px; display: block; object-fit: cover; aspect-ratio: 4/5; scroll-snap-align: start; transition: transform 0.2s; }
+  .carousel-grid img:hover { transform: translateY(-4px); }
+  .coming-block { border: 0.5px dashed var(--border); border-radius: 14px; padding: 48px; text-align: center; }
+  .coming-block p { font-size: 13px; color: var(--light-text); margin-bottom: 8px; }
+  .coming-block span { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); font-style: italic; }
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .page-header { padding: 48px 24px 36px; }
+    .page-header h1 { font-size: 36px; }
+    .container { padding: 40px 24px 60px; }
+    .carousel-grid { grid-template-columns: 1fr; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Samaira Aima</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <a href="off-the-clock.html" class="back-link">← Back to off the clock</a>
+  <h1>Things I make<br><em>just for me.</em></h1>
+  <p>Personal recaps, aesthetics, and visual experiments. No brief, no deadline. Just things that felt worth making.</p>
+</div>
+
+<div class="container">
+
+  <!-- MARCH RECAP -->
+  <div class="carousel-section">
+    <div class="section-label">March 2026</div>
+    <div class="carousel-title">March Recap</div>
+    <div class="carousel-desc">Vancouver in cherry blossom season. Celebrated birthdays, met my brother after a year, went hiking, and somehow made it through midterms.</div>
+    <div class="carousel-grid">
+      <img src="carousel-1.jpg" alt="March Recap slide 1">
+      <img src="carousel-2.jpg" alt="March Recap slide 2">
+      <img src="carousel-3.jpg" alt="March Recap slide 3">
+    </div>
+  </div>
+
+  <!-- MORE COMING -->
+  <div class="coming-block">
+    <p>More recaps on the way.</p>
+    <span>Updated when the mood strikes.</span>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
