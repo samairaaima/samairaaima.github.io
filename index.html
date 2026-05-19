@@ -104,7 +104,11 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" style="position:relative; overflow:hidden;">
+<video autoplay muted loop playsinline style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0; opacity:0.35;">
+  <source src="cherry.mp4" type="video/mp4">
+</video>
+<div style="position:relative; z-index:1; display:contents;">
   <div class="hero-left">
     <div class="hero-tag">Marketing Portfolio</div>
     <p style="font-size: 13px; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.02em;">Hi, you found me 🩷</p>
@@ -126,7 +130,9 @@
     <div class="pill pill-rose">Content creation</div>
     <div class="pill pill-terra">Community engagement</div>
     <div class="hero-scroll">Scroll to explore</div>
+   </div>
   </div>
+ 
 </section>
 
 <div class="divider"></div>
