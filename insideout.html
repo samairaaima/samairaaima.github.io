@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inside Out — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6; --cream: #F5EFE6; --rose: #F2DDE0; --rose-dark: #8C3A45; --rose-mid: #C4818A;
+    --yellow: #F7EEB8; --yellow-dark: #7A6300; --terracotta: #F5E6D3; --terra-dark: #8C5E2A; --terra-mid: #C4956A;
+    --ink: #2C2519; --muted: #7A6B5A; --border: #E8DDD0; --light-text: #B0A090;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .case-hero { padding: 80px 64px 64px; max-width: 860px; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light-text); text-decoration: none; margin-bottom: 40px; transition: color 0.2s; }
+  .back-link:hover { color: var(--ink); }
+  .case-type { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-mid); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .case-type::before { content: ''; display: block; width: 24px; height: 1px; background: var(--terra-mid); }
+  .case-hero h1 { font-family: 'Playfair Display', serif; font-size: 56px; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 16px; }
+  .case-hero h1 em { font-style: italic; color: var(--rose-mid); }
+  .brand-pairing { font-size: 16px; font-weight: 500; color: var(--ink); letter-spacing: 0.06em; margin-bottom: 32px; }
+  .insight-line { font-family: 'Playfair Display', serif; font-size: 22px; line-height: 1.4; color: var(--ink); border-left: 2px solid var(--rose-mid); padding-left: 24px; max-width: 560px; margin-bottom: 16px; }
+  .insight-line:last-of-type { margin-bottom: 48px; }
+  .divider { height: 0.5px; background: var(--border); margin: 0 64px; }
+  .case-section { padding: 64px 64px; max-width: 860px; }
+  .section-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-text); margin-bottom: 24px; }
+  .case-section p { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 16px; max-width: 620px; }
+  .case-section p strong { color: var(--ink); font-weight: 500; }
+  .thinking-block { background: var(--cream); border-radius: 14px; padding: 36px 40px; margin-top: 8px; max-width: 680px; }
+  .thinking-block p { font-size: 15px; color: var(--ink); line-height: 1.9; margin-bottom: 0; }
+  .kits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
+  .kit-card { border: 0.5px solid var(--border); border-radius: 14px; overflow: hidden; background: #fff; }
+  .kit-card-top { padding: 20px 22px 16px; border-bottom: 0.5px solid var(--border); }
+  .kit-number { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+  .kit-title { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 4px; }
+  .kit-tagline { font-size: 12px; font-style: italic; }
+  .kit-card-body { padding: 18px 22px 22px; }
+  .kit-item { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+  .kit-item:last-child { margin-bottom: 0; }
+  .kit-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .dot-iv { background: var(--terra-mid); }
+  .dot-laneige { background: var(--rose-mid); }
+  .kit-item-text { font-size: 12px; line-height: 1.6; color: var(--muted); }
+  .kit-item-brand { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); display: block; margin-bottom: 1px; }
+  .kit-card:nth-child(1) .kit-card-top { background: var(--yellow); }
+  .kit-card:nth-child(1) .kit-number { color: var(--yellow-dark); }
+  .kit-card:nth-child(1) .kit-title { color: var(--yellow-dark); }
+  .kit-card:nth-child(1) .kit-tagline { color: var(--yellow-dark); }
+  .kit-card:nth-child(2) .kit-card-top { background: var(--terracotta); }
+  .kit-card:nth-child(2) .kit-number { color: var(--terra-dark); }
+  .kit-card:nth-child(2) .kit-title { color: var(--terra-dark); }
+  .kit-card:nth-child(2) .kit-tagline { color: var(--terra-dark); }
+  .kit-card:nth-child(3) .kit-card-top { background: var(--rose); }
+  .kit-card:nth-child(3) .kit-number { color: var(--rose-dark); }
+  .kit-card:nth-child(3) .kit-title { color: var(--rose-dark); }
+  .kit-card:nth-child(3) .kit-tagline { color: var(--rose-dark); }
+  .kit-card:nth-child(4) .kit-card-top { background: var(--cream); }
+  .kit-card:nth-child(4) .kit-number { color: var(--terra-dark); }
+  .kit-card:nth-child(4) .kit-title { color: var(--ink); }
+  .kit-card:nth-child(4) .kit-tagline { color: var(--muted); }
+  .kit-legend { display: flex; gap: 20px; margin-top: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--light-text); letter-spacing: 0.06em; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .visual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+  .visual-item { border-radius: 14px; overflow: hidden; border: 0.5px solid var(--border); background: var(--cream); }
+  .visual-item img { width: 100%; display: block; object-fit: cover; }
+  .visual-item video { width: 100%; display: block; }
+  .visual-label { padding: 14px 18px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light-text); border-top: 0.5px solid var(--border); }
+  .visual-full { grid-column: 1 / -1; }
+  .disclaimer { font-size: 11px; color: var(--light-text); margin-top: 48px; padding-top: 24px; border-top: 0.5px solid var(--border); max-width: 620px; }
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; margin-top: 48px; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; } .nav-links { gap: 20px; }
+    .case-hero { padding: 48px 24px 40px; }
+    .case-hero h1 { font-size: 38px; }
+    .case-section { padding: 48px 24px; }
+    .divider { margin: 0 24px; }
+    .kits-grid { grid-template-columns: 1fr 1fr; }
+    .visual-grid { grid-template-columns: 1fr; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex; flex-direction:column; gap:3px;">
+    <a href="index.html" class="nav-name">Samaira Aima</a>
+    <span style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--light-text);">Marketing Portfolio</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#explore">Explore</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="case-hero">
+  <a href="design.html" class="back-link">← Back to work</a>
+  <div class="case-type">Brand Collab Concept</div>
+  <h1>Inside <em>Out.</em></h1>
+  <p class="brand-pairing">Liquid I.V. × Laneige</p>
+  <p class="insight-line">You replenish your body. You forget your skin.</p>
+  <p class="insight-line" style="margin-bottom:0;">Inside Out puts them there.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="case-section">
+  <div class="section-label">The Concept</div>
+  <p>Liquid I.V. owns the inside. Laneige owns the outside. Both brands are already talking to the same person, they just haven't been in the same room yet.</p>
+  <p>This isn't about aesthetics matching. It's about a gap that actually exists: the moment your body is being replenished and your skin is being forgotten. Neither brand has closed that gap alone. Together, they can.</p>
+  <p>Laneige Canada and Liquid I.V. Canada co-posted a giveaway: a product bundle which got 6,556 comments. There was value creation, but value was not further captured. There was no follow through. Inside Out is the campaign that should have come next.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="case-section">
+  <div class="section-label">My Take</div>
+  <div class="thinking-block">
+    <p>Halftime. Everyone on the field sipping electrolytes, doing everything right. My face was itching, going red, breaking out from the sweat. I was holding a drink designed to fix exactly what was happening on the inside. Nothing existed for what was happening on the outside. The gap felt so obvious I couldn't believe nobody had closed it. This isn't a campaign I thought would look good in a portfolio. It's a campaign I genuinely wished existed. Those are the briefs worth writing.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="case-section">
+  <div class="section-label">The Campaign</div>
+  <p>A four-part system built around movement: before, during, after, and overnight. Liquid I.V. gives back what sweat takes. Laneige supports what sweat does to the skin. One routine. Two brands. Nothing left out.</p>
+
+  <div class="kits-grid">
+    <div class="kit-card">
+      <div class="kit-card-top">
+        <div class="kit-number">Kit 01</div>
+        <div class="kit-title">Before</div>
+        <div class="kit-tagline">Fuel up. Protect. Go.</div>
+      </div>
+      <div class="kit-card-body">
+        <div class="kit-item">
+          <div class="kit-dot dot-iv"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Liquid I.V.</span>Hydration Multiplier + Energy</div>
+        </div>
+        <div class="kit-item">
+          <div class="kit-dot dot-laneige"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Laneige</span>Water Bank Blue Hyaluronic Cream Moisturizer</div>
+        </div>
+        <div class="kit-item">
+          <div class="kit-dot dot-laneige"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Laneige</span>Water Bank UV Barrier Sunscreen SPF 50+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-card-top">
+        <div class="kit-number">Kit 02</div>
+        <div class="kit-title">During</div>
+        <div class="kit-tagline">Keep going. Stay hydrated.</div>
+      </div>
+      <div class="kit-card-body">
+        <div class="kit-item">
+          <div class="kit-dot dot-iv"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Liquid I.V.</span>Hydration Multiplier</div>
+        </div>
+        <div class="kit-item">
+          <div class="kit-dot dot-laneige"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Laneige</span>Mini Cream Skin Milky Toner Mist, a fine spritz, no hands, no residue</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-card-top">
+        <div class="kit-number">Kit 03</div>
+        <div class="kit-title">After</div>
+        <div class="kit-tagline">Restore everything.</div>
+      </div>
+      <div class="kit-card-body">
+        <div class="kit-item">
+          <div class="kit-dot dot-laneige"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Laneige</span>Water Bank Gentle Gel Cleanser</div>
+        </div>
+        <div class="kit-item">
+          <div class="kit-dot dot-iv"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Liquid I.V.</span>Hydration Multiplier + Gut Health</div>
+        </div>
+        <div class="kit-item">
+          <div class="kit-dot dot-laneige"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Laneige</span>Water Bank Blue Hyaluronic Gel Moisturizer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-card">
+      <div class="kit-card-top">
+        <div class="kit-number">Kit 04</div>
+        <div class="kit-title">Overnight</div>
+        <div class="kit-tagline">Both sides. While you sleep.</div>
+      </div>
+      <div class="kit-card-body">
+        <div class="kit-item">
+          <div class="kit-dot dot-iv"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Liquid I.V.</span>Sleep Multiplier</div>
+        </div>
+        <div class="kit-item">
+          <div class="kit-dot dot-laneige"></div>
+          <div class="kit-item-text"><span class="kit-item-brand">Laneige</span>Cica Sleeping Mask</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kit-legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--terra-mid);"></div>Liquid I.V.</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--rose-mid);"></div>Laneige</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="case-section">
+  <div class="section-label">The Visual World</div>
+  <p>Campaign assets across Instagram feed and stories. Kit 03 animated post, hero flat lay, and Instagram story concept.</p>
+
+  <div class="visual-grid">
+
+    <div class="visual-item visual-full">
+      <img src="flat.jpg" alt="Inside Out hero flat lay — all campaign products">
+      <div class="visual-label">Hero flat lay — all four kits</div>
+    </div>
+
+    <div class="visual-item">
+      <video autoplay muted loop playsinline>
+        <source src="K3.mp4" type="video/mp4">
+      </video>
+      <div class="visual-label">Kit 03 — After, Instagram post</div>
+    </div>
+
+    <div class="visual-item">
+      <img src="story.jpg" alt="Inside Out Instagram story concept">
+      <div class="visual-label">Instagram story concept</div>
+    </div>
+
+  </div>
+
+  <p class="disclaimer">Concept only. Not affiliated with Liquid I.V. or Laneige. All brand names and products referenced for illustrative purposes.</p>
+</div>
+
+<footer>
+  <p>© 2026 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
