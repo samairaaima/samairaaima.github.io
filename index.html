@@ -42,6 +42,14 @@
   .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .work-card { border: 0.5px solid var(--border); border-radius: 14px; overflow: hidden; background: #fff; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
   .work-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(44,37,25,0.08); }
+ .muted-card {
+  cursor: default;
+}
+
+.muted-card:hover {
+  transform: none;
+  box-shadow: none;
+}
   .card-top { height: 148px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 24px; font-style: italic; }
   .card-top.writing { background: var(--yellow); color: var(--yellow-dark); }
   .card-top.cases { background: var(--rose); color: var(--rose-dark); }
@@ -164,17 +172,17 @@
         <span class="card-tag">See the work →</span>
       </div>
     </div>
-  <div class="work-card" onclick="window.location='between-classes.html'" style="cursor:pointer;">
+
+ <div class="work-card muted-card" style="cursor:default;">
   <div class="card-top cases">Between classes</div>
   <div class="card-body">
     <div class="card-type">Academic work</div>
     <div class="card-title">Still learning</div>
     <div class="card-desc">Strategy and research projects, case studies, and academic work.</div>
-    <span class="card-link muted">Coming soon</span>
+    <span class="card-link muted">Coming soon →</span>
   </div>
 </div>
-
-  </div>
+   </div>
 </section>
 
 <div class="divider"></div>
