@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>between classes — samaira aima</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --warm-white:   #FAF6F0;
+      --dusty-rose:   #D4A5A5;
+      --rose-light:   #EDD5D5;
+      --rose-deep:    #B87E7E;
+      --butter:       #F0DFA0;
+      --butter-deep:  #D9C36A;
+      --terracotta:   #C4693B;
+      --terra-light:  #E8B99A;
+      --terra-deep:   #9E4E28;
+      --ink:          #2C2318;
+      --ink-mid:      #5C4A3A;
+      --ink-soft:     #8C7A6A;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--warm-white);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.4rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 246, 240, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(212, 165, 165, 0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--terracotta); }
+    .nav-links a.active { color: var(--terracotta); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 9rem 4rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+    }
+
+    .hero-left h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-left h1 em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      border-bottom: 1px solid var(--dusty-rose);
+      padding-bottom: 0.2rem;
+    }
+
+    .hero-right {
+      padding-bottom: 0.5rem;
+    }
+
+    /* ── MY TAKE BLOCK ── */
+    .my-take {
+      background: var(--rose-light);
+      border-left: 3px solid var(--dusty-rose);
+      border-radius: 0 8px 8px 0;
+      padding: 1.6rem 2rem;
+    }
+
+    .my-take-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      font-weight: 500;
+      margin-bottom: 0.7rem;
+    }
+
+    .my-take p {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      padding: 0 4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .section-divider span {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--dusty-rose) 0%, transparent 100%);
+    }
+
+    /* ── PROJECTS GRID ── */
+    .projects {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      padding: 0 4rem 6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* featured card no longer needs special spanning */
+    .project-card.featured {
+      grid-column: unset;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2.2rem 2.4rem;
+      border: 1px solid rgba(212, 165, 165, 0.2);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--terracotta), var(--dusty-rose));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(44, 35, 24, 0.08);
+      border-color: rgba(196, 105, 59, 0.2);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .card-course {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+    }
+
+    .card-type {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      background: var(--warm-white);
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      border: 1px solid rgba(140, 122, 106, 0.2);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .project-card.featured .card-title {
+      font-size: 1.75rem;
+    }
+
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(212, 165, 165, 0.15);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      background: var(--warm-white);
+      border: 1px solid rgba(212, 165, 165, 0.3);
+      border-radius: 20px;
+      padding: 0.2rem 0.6rem;
+    }
+
+    .card-arrow {
+      font-size: 1rem;
+      color: var(--terra-light);
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .project-card:hover .card-arrow {
+      transform: translate(3px, -3px);
+      color: var(--terracotta);
+    }
+
+    /* colour accents per card */
+    .card-rose .card-course { color: var(--rose-deep); }
+    .card-rose:hover { border-color: rgba(184, 126, 126, 0.25); }
+    .card-rose::before { background: linear-gradient(90deg, var(--dusty-rose), var(--butter-deep)); }
+
+    .card-butter .card-course { color: var(--butter-deep); }
+    .card-butter:hover { border-color: rgba(217, 195, 106, 0.3); }
+    .card-butter::before { background: linear-gradient(90deg, var(--butter-deep), var(--terra-light)); }
+
+    /* ── EXCERPT NOTE ── */
+    .excerpt-note {
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin-top: -0.3rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(212, 165, 165, 0.2);
+      padding: 2.5rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    footer a {
+      font-size: 0.78rem;
+      color: var(--terracotta);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1.4rem; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 8rem 1.5rem 3rem;
+        gap: 2rem;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem 4rem;
+      }
+
+      .project-card.featured { grid-column: 1; }
+      .section-divider { padding: 0 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.8rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">samaira aima</a>
+    <ul class="nav-links">
+      <li><a href="index.html">work</a></li>
+      <li><a href="writing.html">writing</a></li>
+      <li><a href="between-classes.html" class="active">academics</a></li>
+      <li><a href="about.html">about</a></li>
+      <li><a href="mailto:samairaaima07@gmail.com">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1>Between<br/><em>classes.</em></h1>
+      <span class="hero-tag">UBC Sauder · BCom · 2023 – present</span>
+    </div>
+
+    <div class="hero-right">
+      <div class="my-take">
+        <p class="my-take-label">my take</p>
+        <p>
+          Business school teaches you frameworks. What it doesn't tell you is that the interesting part is what happens 
+          when the framework breaks. These are the projects where I stopped filling in templates and started 
+          actually thinking: about brands that mean more than they say, communities that deserve better marketing, 
+          and the data that refuses to confirm your hypothesis.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="section-divider">
+    <span>selected work</span>
+  </div>
+
+  <!-- PROJECTS GRID -->
+  <div class="projects">
+
+    <!-- OIB — FEATURED -->
+    <a href="oib-proposal.html" class="project-card featured">
+      <h2 class="card-title">Digital Storytelling &amp; Marketing Capacity Program: Osoyoos Indian Band</h2>
+      <p class="card-desc">
+        A full consulting-style proposal written from the client's perspective, recommending an 18-month 
+        Nation-led digital marketing program for OIB's tourism and viticulture businesses. Covers financing 
+        strategy, KPIs, risk assessment, and governance protocol.
+      </p>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="tag">Indigenous Business</span>
+          <span class="tag">Digital Strategy</span>
+          <span class="tag">Financial Strategy</span>
+        </div>
+        <span class="card-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- STARBUCKS -->
+    <a href="starbucks-case.html" class="project-card">
+      <div class="card-top">
+      <h2 class="card-title">Starbucks vs. Luckin Coffee: Brand Meaning in China</h2>
+      <p class="card-desc">
+        A 7-question brand deep dive applying the Brand Resonance Pyramid, BAV framework, and break-even 
+        analysis to two very different coffee strategies. The interesting tension: Starbucks sells a feeling, 
+        Luckin sells a behaviour, and only one of those creates real loyalty.
+      </p>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="tag">Brand Strategy</span>
+          <span class="tag">Consumer Behaviour</span>
+          <span class="tag">Frameworks</span>
+        </div>
+        <span class="card-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- FENTY -->
+    <a href="fenty-audit.html" class="project-card card-rose">
+      <h2 class="card-title">Fenty Beauty — Brand Audit</h2>
+      <p class="card-desc">
+        Primary research across multiple Sephora locations, asking real shoppers for brand associations unprompted, then with a nudge, then structured questions. The finding: Rihanna transfers. Savage x Fenty barely registered.
+      </p>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="tag">Brand Audit</span>
+          <span class="tag">Primary Research</span>
+          <span class="tag">Data Analysis</span>
+        </div>
+        <span class="card-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- EARNEST ICE CREAM -->
+    <a href="earnest-ice-cream.html" class="project-card card-butter">
+      <h2 class="card-title">A Very Earnest Marketing Paper: Earnest Ice Cream</h2>
+      <p class="card-desc">
+        An A/B experiment testing two ad strategies on 200 simulated consumers. The finding that surprised us: the nostalgic, family-oriented ad outperformed the Gen Z-targeted one across both segments.
+      </p>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="tag">A/B Testing</span>
+          <span class="tag">Consumer Psychology</span>
+          <span class="tag">Advertising</span>
+        </div>
+        <span class="card-arrow">↗</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Samaira Aima</p>
+    <a href="index.html">← back to all work</a>
+  </footer>
+
+</body>
+</html>
