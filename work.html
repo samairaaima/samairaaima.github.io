@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6; --cream: #F5EFE6; --rose: #F2DDE0; --rose-dark: #8C3A45; --rose-mid: #C4818A;
+    --yellow: #F7EEB8; --yellow-dark: #7A6300; --terracotta: #F5E6D3; --terra-dark: #8C5E2A; --terra-mid: #C4956A;
+    --ink: #2C2519; --muted: #7A6B5A; --border: #E8DDD0; --light-text: #B0A090;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .work-head { padding: 72px 64px 8px; }
+  .work-head .eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-text); margin-bottom: 18px; }
+  .work-head h1 { font-family: 'Playfair Display', serif; font-size: 60px; line-height: 1.02; letter-spacing: -0.01em; margin-bottom: 18px; }
+  .work-head h1 em { font-style: italic; color: var(--rose-dark); }
+  .work-head p { font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 560px; }
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; padding: 36px 64px 12px; }
+  .filter { border: 0.5px solid var(--border); background: transparent; border-radius: 22px; padding: 8px 18px; font-size: 12px; letter-spacing: 0.04em; color: var(--muted); cursor: pointer; font-family: inherit; transition: all 0.2s; }
+  .filter:focus { outline: none; }
+  .filter:hover { border-color: var(--ink); color: var(--ink); }
+  .filter.active { background: var(--rose-mid); color: var(--warm-white); border-color: var(--rose-mid); }
+  .work-list { padding: 8px 64px 40px; }
+  .group-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-text); margin: 38px 0 6px; }
+  .work-item { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; padding: 24px 22px; margin-bottom: 12px; background: #fff; border: 0.5px solid var(--border); border-radius: 12px; text-decoration: none; color: inherit; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+  .work-item:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(140,58,69,0.16); border-color: var(--rose-mid); }
+  .work-item-cat { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-text); margin-bottom: 8px; }
+  .work-item-title { font-family: 'Playfair Display', serif; font-size: 24px; line-height: 1.15; color: var(--ink); margin-bottom: 8px; }
+  .work-item-title em { font-style: italic; color: var(--rose-mid); }
+  .work-item-desc { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 660px; }
+  .work-item-right { display: flex; align-items: center; gap: 18px; white-space: nowrap; }
+  .work-item-tag { font-size: 13px; color: var(--terra-dark); font-style: italic; }
+  .work-item-arrow { font-size: 18px; color: var(--light-text); transition: transform 0.25s ease, color 0.2s; }
+  .work-item:hover .work-item-arrow { transform: translate(4px,-4px); color: var(--terra-mid); }
+  .placeholder { opacity: 0.55; }
+  .placeholder .work-item-title::after { content: ' (add link)'; font-size: 11px; font-style: normal; color: var(--rose-mid); letter-spacing: 0.04em; }
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; } .nav-links { gap: 18px; }
+    .work-head { padding: 48px 24px 8px; } .work-head h1 { font-size: 38px; }
+    .filters { padding: 28px 24px 10px; } .work-list { padding: 8px 24px 40px; }
+    .work-item { grid-template-columns: 1fr; gap: 12px; }
+    .work-item-right { justify-content: space-between; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Samaira Aima</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="index.html#explore">Explore</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="samaira-aima-resume.pdf" target="_blank">Resume</a></li>
+  </ul>
+</nav>
+
+<section class="work-head">
+  <div class="eyebrow">Everything in one place</div>
+  <h1>More <em>work.</em></h1>
+  <p>Writing, brand campaigns, design, and academic projects. All of it here, no digging required.</p>
+</section>
+
+<div class="filters" id="filters">
+  <button class="filter active" data-filter="all">All</button>
+  <button class="filter" data-filter="writing">Writing</button>
+  <button class="filter" data-filter="campaign">Brand campaigns</button>
+  <button class="filter" data-filter="design">Design</button>
+  <button class="filter" data-filter="academic">Academics</button>
+</div>
+
+<div class="work-list" id="workList">
+
+  <!-- ============ WRITING ============ -->
+  <div class="group-label" data-group="writing">Writing</div>
+
+  <a class="work-item" href="bergamo.html" data-cat="writing">
+    <div>
+      <div class="work-item-cat">Press Release</div>
+      <div class="work-item-title">Bergamo Restaurant Launch</div>
+      <div class="work-item-desc">A pre-launch press release written two days before opening, without ever visiting the restaurant.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read piece</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <a class="work-item" href="bomba.html" data-cat="writing">
+    <div>
+      <div class="work-item-cat">Press Release</div>
+      <div class="work-item-title">When Feast Meets Fiesta: Bomba</div>
+      <div class="work-item-desc">A launch press release written after a site visit with the founders, capturing energy that was already in the room.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read piece</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <a class="work-item" href="https://www.the-kaleidoscope.com/post/international-student-loneliness-finding-connection-in-b-c" target="_blank" data-cat="writing">
+    <div>
+      <div class="work-item-cat">Published · The Kaleidoscope Mental Health Support Society</div>
+      <div class="work-item-title">International Student Loneliness: Finding Connection in B.C.</div>
+      <div class="work-item-desc">A personal essay on loneliness, belonging, and what it actually takes to feel at home in a new country.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read on Kaleidoscope</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <a class="work-item" href="https://www.the-kaleidoscope.com/post/what-is-a-peer-support-group-for-students" target="_blank" data-cat="writing">
+    <div>
+      <div class="work-item-cat">Published · The Kaleidoscope Mental Health Support Society</div>
+      <div class="work-item-title">What is a Peer Support Group?</div>
+      <div class="work-item-desc">On why the most powerful support does not always come from a counselor's office, and where to actually find it.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read on Kaleidoscope</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <!-- ============ BRAND CAMPAIGNS ============ -->
+  <div class="group-label" data-group="campaign">Brand campaigns</div>
+
+  <a class="work-item" href="cocacola-ai-ad.html" data-cat="campaign">
+    <div>
+      <div class="work-item-cat">Campaign Breakdown</div>
+      <div class="work-item-title">Coca-Cola AI Christmas Ad: When the Magic Goes Missing</div>
+      <div class="work-item-desc">Why the backlash was not really about AI, and what gets lost when brands try to automate emotion.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read piece</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <a class="work-item" href="nespresso.html" data-cat="campaign">
+    <div>
+      <div class="work-item-cat">Campaign Breakdown</div>
+      <div class="work-item-title">Nespresso: How to Stay Relevant Without Starting Over</div>
+      <div class="work-item-desc">Clooney, Dua Lipa, The Weeknd, and what Nespresso actually understands about brand evolution.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read piece</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <!-- ============ DESIGN ============ -->
+  <div class="group-label" data-group="design">Design</div>
+
+  <a class="work-item" href="emp.html" data-cat="design">
+    <div>
+      <div class="work-item-cat">Campaign Graphic · EMP UBC CUS</div>
+      <div class="work-item-title">Mentee Applications Open</div>
+      <div class="work-item-desc">A campaign built to stop the scroll and drive applications. The collage aesthetic was loud enough to stop the scroll, structured enough to feel professional.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">140+ applicants</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <a class="work-item" href="grad-night.html" data-cat="design">
+    <div>
+      <div class="work-item-cat">Event Rebrand · Sauder CUS</div>
+      <div class="work-item-title">Sauder Grad Night</div>
+      <div class="work-item-desc">A full visual rebrand of a recurring event into one cohesive gala identity: tiered ticket series, itinerary, and team rollout.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Sold-out night</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <a class="work-item placeholder" href="#" data-cat="design">
+    <div>
+      <div class="work-item-cat">Video / Social Content · SISA UBC CUS</div>
+      <div class="work-item-title">SISA</div>
+      <div class="work-item-desc">Add a one-line description and the page link for this SISA piece.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Design</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <!-- ============ ACADEMICS ============ -->
+  <div class="group-label" data-group="academic">Academics</div>
+
+  <a class="work-item" href="oib-proposal.html" data-cat="academic">
+    <div>
+      <div class="work-item-cat">Strategy Proposal · UBC Sauder</div>
+      <div class="work-item-title">Digital Storytelling &amp; Marketing Capacity Program: OIB</div>
+      <div class="work-item-desc">A consulting-style proposal for an 18-month Nation-led digital marketing program for the Osoyoos Indian Band, covering financing, KPIs, risk, and governance.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read piece</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <a class="work-item" href="starbucks-case.html" data-cat="academic">
+    <div>
+      <div class="work-item-cat">Brand Case · UBC Sauder</div>
+      <div class="work-item-title">Starbucks vs. Luckin Coffee: Brand Meaning in China</div>
+      <div class="work-item-desc">A brand deep dive applying the Brand Resonance Pyramid, BAV, and break-even analysis to two very different coffee strategies. Starbucks sells a feeling, Luckin sells a behaviour, and only one creates real loyalty.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read piece</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <a class="work-item" href="fenty-audit.html" data-cat="academic">
+    <div>
+      <div class="work-item-cat">Brand Audit · UBC Sauder</div>
+      <div class="work-item-title">Fenty Beauty: Brand Audit</div>
+      <div class="work-item-desc">Primary research across multiple Sephora locations, asking real shoppers for brand associations unprompted, then nudged, then structured. The finding: Rihanna transfers, Savage x Fenty barely registered.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read piece</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+  <a class="work-item" href="earnest-ice-cream.html" data-cat="academic">
+    <div>
+      <div class="work-item-cat">Marketing Experiment · UBC Sauder</div>
+      <div class="work-item-title">A Very Earnest Marketing Paper: Earnest Ice Cream</div>
+      <div class="work-item-desc">An A/B experiment testing two ad strategies on 200 simulated consumers. The surprise: the nostalgic, family-oriented ad outperformed the Gen Z-targeted one across both segments.</div>
+    </div>
+    <div class="work-item-right"><span class="work-item-tag">Read piece</span><span class="work-item-arrow">↗</span></div>
+  </a>
+
+</div>
+
+<footer>
+  <p>© 2026 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var filters = document.querySelectorAll('.filter');
+    var items = document.querySelectorAll('.work-item');
+    var groups = document.querySelectorAll('.group-label');
+    filters.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filters.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var f = btn.getAttribute('data-filter');
+        items.forEach(function (item) {
+          var show = (f === 'all') || (item.getAttribute('data-cat') === f);
+          item.style.display = show ? '' : 'none';
+        });
+        groups.forEach(function (g) {
+          var show = (f === 'all') || (g.getAttribute('data-group') === f);
+          g.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
