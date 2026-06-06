@@ -53,9 +53,9 @@
   .about-card.rose-bg .about-card-val { color: var(--rose-dark); }
   /* PROOF STRIP */
   .proof-lead { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: var(--muted); margin-bottom: 36px; }
-  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-  .proof-num { font-family: 'Playfair Display', serif; font-size: 46px; line-height: 1; color: var(--rose-dark); margin-bottom: 10px; }
-  .proof-desc { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 280px; }
+.proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .proof-num { font-family: 'Playfair Display', serif; font-size: 42px; line-height: 1; color: var(--rose-dark); margin-bottom: 10px; }
+  .proof-desc { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 240px; }
   /* INSIDE OUT */
   .case-type { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-mid); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
   .case-type::before { content: ''; display: block; width: 24px; height: 1px; background: var(--terra-mid); }
@@ -157,6 +157,9 @@
   .footer-links { display: flex; gap: 24px; }
   .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--ink); }
+@media (max-width: 1024px) {
+    .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  }
   @media (max-width: 768px) {
     nav { padding: 18px 24px; } .nav-links { gap: 20px; }
     .hero { grid-template-columns: 1fr; padding: 60px 24px 48px; min-height: auto; gap: 40px; }
@@ -178,7 +181,7 @@
 <body>
 
 <nav>
-  <a href="#" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
+<a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
     <img src="sa-logo.jpg" alt="SA monogram" style="height:42px; width:auto; display:block;">
     <span style="display:flex; flex-direction:column; gap:3px;">
       <span class="nav-name">Samaira Aima</span>
@@ -199,10 +202,10 @@
   <video autoplay muted loop playsinline style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1; opacity:0.5;">
     <source src="cherry.mp4" type="video/mp4">
   </video>
-  <div class="hero-left" style="position:relative; z-index:1;">
-    <p style="font-size:13px; color:var(--ink); margin-bottom:8px; letter-spacing:0.02em;">Hi, you found me 🩷</p>
-    <h1>Strategy.<br><em>Story.</em><br>Impact.</h1>
-    <p class="hero-sub" style="color:#2C2519;">Every brand has a personality. I find it, shape it, and give it a voice.</p>
+ <div class="hero-left" style="position:relative; z-index:1;">
+    <p style="font-size:13px; color:var(--ink); margin-bottom:8px; letter-spacing:0.02em; text-shadow:0 1px 8px rgba(253,250,246,0.9);">Hi, you found me 🩷</p>
+    <h1 style="text-shadow:0 2px 12px rgba(253,250,246,0.85);">Strategy.<br><em>Story.</em><br>Impact.</h1>
+    <p class="hero-sub" style="color:#2C2519; text-shadow:0 1px 8px rgba(253,250,246,0.9);">Every brand has a personality. I find it, shape it, and give it a voice.</p>
     <a href="#about" class="hero-cta">
       <span>See my work</span>
       <div class="cta-circle">→</div>
@@ -211,9 +214,9 @@
   <div class="hero-right" style="position:relative; z-index:1;">
     <img src="photo.jpg" alt="Samaira Aima" style="width:100%; max-width:320px; border-radius:12px; object-fit:cover; margin-bottom:16px;">
     <div style="margin-top:8px;">
-      <p style="font-size:15px; font-weight:600; color:#2C2519; margin-bottom:2px;">Samaira Aima</p>
-      <p style="font-size:12px; color:#2C2519; letter-spacing:0.04em;">Marketing & Business Analytics, UBC Sauder</p>
-      <p style="font-size:12px; color:#2C2519; letter-spacing:0.04em;">Based in Vancouver, Canada</p>
+      <p style="font-size:15px; font-weight:600; color:#2C2519; margin-bottom:2px; text-shadow:0 1px 8px rgba(253,250,246,0.9);">Samaira Aima</p>
+      <p style="font-size:12px; color:#2C2519; letter-spacing:0.04em; text-shadow:0 1px 8px rgba(253,250,246,0.9);">Marketing & Business Analytics, UBC Sauder</p>
+      <p style="font-size:12px; color:#2C2519; letter-spacing:0.04em; text-shadow:0 1px 8px rgba(253,250,246,0.9);">Based in Vancouver, Canada</p>
     </div>
     <div class="pill pill-terra">Digital marketing</div>
     <div class="pill pill-yellow">Brand strategy</div>
@@ -260,10 +263,14 @@
 <!-- PROOF -->
 <section style="padding: 24px 64px 60px;">
   <div class="proof-lead reveal">A few things that have worked so far</div>
-  <div class="proof-grid reveal">
+ <div class="proof-grid reveal">
     <div>
       <div class="proof-num">12.9K</div>
-      <div class="proof-desc">organic views on one Friendsgiving Event reel, 75% from non-followers, which drove 101 RSVPs</div>
+      <div class="proof-desc">views on a Friendsgiving reel, 75% from people who didn't follow us yet</div>
+    </div>
+    <div>
+      <div class="proof-num">101</div>
+      <div class="proof-desc">RSVPs for Cultural Night, driven by promoting the whole experience, not just the event</div>
     </div>
     <div>
       <div class="proof-num">500 → 852</div>
