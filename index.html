@@ -178,7 +178,11 @@
   .pill-link:hover { border-color: var(--rose-mid); transform: translateY(-2px); }
   .pill-dot { color: #fff; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; }
   .pill-arrow { color: var(--terra-mid); transition: transform 0.2s; }
-  .pill-link:hover .pill-arrow { transform: translateX(3px); }
+ .pill-link:hover .pill-arrow { transform: translateX(3px); }
+  .pill-link-filled { display: inline-flex; align-items: center; gap: 10px; background: var(--rose-dark); color: var(--warm-white); border-radius: 30px; padding: 15px 26px; font-size: 14px; font-weight: 500; text-decoration: none; transition: transform 0.2s, background 0.2s; }
+  .pill-link-filled:hover { transform: translateY(-2px); background: #732e38; }
+  .pill-dot-light { background: rgba(255,255,255,0.22); color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; }
+ 
   /* muted/disabled pill (destination not built yet) */
   .pill-link.muted { opacity: 0.5; cursor: default; pointer-events: none; }
   .pill-link.muted .pill-soon { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-text); margin-left: 4px; }
@@ -471,7 +475,7 @@
 <!-- BRAND LINK: original concepts -->
 <div class="brand-link-row">
   <span class="lead">Liked this? I have more campaigns I built from scratch.</span>
- <a href="concepts.html" class="pill-link"><span class="pill-dot" style="background:var(--rose-mid);">✦</span> More original concepts <span class="pill-arrow">→</span></a>
+<a href="concepts.html" class="pill-link-filled"><span class="pill-dot-light">✦</span> More original concepts <span>→</span></a>
 </div>
 
 <div class="divider"></div>
