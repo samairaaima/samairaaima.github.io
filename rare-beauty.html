@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Still Showing Up — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6; --cream: #F5EFE6; --rose: #F2DDE0; --rose-dark: #8C3A45; --rose-mid: #C4818A;
+    --yellow: #F7EEB8; --yellow-dark: #7A6300; --terracotta: #F5E6D3; --terra-dark: #8C5E2A; --terra-mid: #C4956A;
+    --ink: #2C2519; --muted: #7A6B5A; --border: #E8DDD0; --light-text: #B0A090;
+    --rb-card: #FBF4EF; --rb-tint: #F8E9E9; --rb-circle: #F3DCE0;
+    --rb-pink: #C9637E; --rb-bright: #E07A93; --rb-line: #EAD3D6;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin: 40px 0 0 64px; transition: gap 0.2s; }
+  .back-link:hover { gap: 12px; color: var(--ink); }
+  section { padding: 40px 64px; }
+  .rb-eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rb-pink); margin-bottom: 16px; }
+  .rb-section-head { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); font-weight: 500; margin-bottom: 28px; }
+  .rb-hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+  .rb-hero h1 { font-family: 'Playfair Display', serif; font-size: 68px; line-height: 0.98; letter-spacing: -0.01em; margin-bottom: 6px; white-space: nowrap; }
+  .rb-hero h1 em { font-style: italic; color: var(--rb-pink); }
+  .rb-hero-desc { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); line-height: 1.8; margin-top: 26px; max-width: 360px; }
+  .rb-hero-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; background: linear-gradient(135deg,#F3DCE0,#FBF4EF); display: flex; align-items: center; justify-content: center; color: var(--light-text); font-size: 13px; }
+  .rb-strategy { display: flex; align-items: stretch; gap: 8px; }
+  .rb-strat-card { flex: 1; background: var(--rb-card); border: 0.5px solid var(--rb-line); border-radius: 14px; padding: 20px 18px; }
+  .rb-strat-num { width: 34px; height: 34px; border-radius: 50%; background: var(--rb-circle); color: var(--rb-pink); font-size: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .rb-strat-card h4 { font-family: 'Playfair Display', serif; font-size: 17px; margin-bottom: 10px; }
+  .rb-strat-card p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .rb-strat-card.pos p { font-family: 'Caveat', cursive; font-size: 19px; color: var(--rb-bright); line-height: 1.35; }
+  .rb-strat-arrow { display: flex; align-items: center; color: var(--rb-line); font-size: 16px; }
+  /* CAMPAIGN IN ACTION: manifesto + videos + visual direction */
+  .rb-action { }
+  .rb-action-manifesto { max-width: 720px; margin-bottom: 44px; }
+  .rb-action-row { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; max-width: 920px; }
+  .rb-block-label { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; margin-bottom: 16px; }
+  .rb-manifesto p { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
+  .rb-manifesto .sign { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--rb-pink); margin-top: 18px; margin-bottom: 2px; }
+  .rb-manifesto .sign-brand { font-size: 12px; letter-spacing: 0.06em; color: var(--rb-pink); }
+  .rb-phones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 300px; }
+  .rb-phone { border-radius: 14px; overflow: hidden; background: linear-gradient(165deg,#FBF0F1,#F3DCE0); border: 0.5px solid var(--rb-line); aspect-ratio: 9/16; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 11px 10px; color: var(--ink); }
+  .rb-phone-top { font-family: 'Playfair Display', serif; font-size: 12px; line-height: 1.2; color: var(--rb-pink); }
+  .rb-phone-play { width: 28px; height: 28px; border: 1.5px solid var(--rb-pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; align-self: center; font-size: 10px; color: var(--rb-pink); }
+  .rb-phone-bot { font-size: 9px; line-height: 1.35; color: var(--muted); }
+  .rb-hashtag { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--rb-pink); margin-top: 18px; }
+  .rb-visual { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; margin-top: 8px; }
+  .rb-moodboard { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rb-mood-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; background: var(--rb-tint); display: flex; align-items: center; justify-content: center; color: var(--light-text); font-size: 10px; }
+  .rb-tone { background: var(--rb-tint); border-radius: 4px; padding: 22px 26px; transform: rotate(2deg); box-shadow: 0 6px 18px rgba(140,58,69,0.10); position: relative; align-self: center; }
+  .rb-tone::before { content: ''; position: absolute; top: -7px; left: 50%; width: 34px; height: 12px; background: rgba(224,122,147,0.45); transform: translateX(-50%) rotate(-2deg); border-radius: 2px; }
+  .rb-tone-label { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .rb-tone-words { font-family: 'Caveat', cursive; font-size: 22px; color: var(--rb-pink); line-height: 1.3; }
+  /* PRODUCT PAGE COPY (own centered section) */
+  .rb-pdp-wrap { max-width: 820px; margin: 0 auto; }
+  .rb-pdp { background: var(--rb-card); border: 0.5px solid var(--rb-line); border-radius: 14px; overflow: hidden; }
+  .rb-pdp-bar { display: flex; align-items: center; gap: 16px; padding: 10px 20px; border-bottom: 0.5px solid var(--rb-line); font-size: 9.5px; letter-spacing: 0.04em; color: var(--muted); }
+  .rb-pdp-bar .brand { font-family: 'Playfair Display', serif; font-size: 13px; color: var(--rb-pink); letter-spacing: 0; }
+  .rb-pdp-body { display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; padding: 22px 26px; align-items: center; }
+  .rb-pdp-body h3 { font-family: 'Playfair Display', serif; font-size: 23px; line-height: 1.15; margin-bottom: 10px; }
+  .rb-pdp-body p { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+  .rb-pdp-btn { display: inline-block; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--ink); border-radius: 30px; padding: 9px 16px; color: var(--ink); }
+  .rb-pdp-prod { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; background: var(--rb-tint); display: flex; align-items: center; justify-content: center; color: var(--light-text); font-size: 10px; }
+  .rb-pdp-foot { padding: 0 26px 16px; }
+  .rb-pdp-set { font-family: 'Playfair Display', serif; font-size: 14px; }
+  .rb-pdp-items { font-size: 11px; color: var(--muted); }
+  .rb-disclaimer { font-size: 10.5px; color: var(--light-text); margin-top: 24px; padding-top: 16px; border-top: 0.5px solid var(--border); text-align: center; white-space: nowrap; overflow: hidden; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .next-piece { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-top: 0.5px solid var(--border); margin: 0 64px; padding: 40px 0; }
+  .next-piece .lead { font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: var(--muted); }
+  .pill-link { display: inline-flex; align-items: center; gap: 8px; border: 0.5px solid var(--border); border-radius: 30px; padding: 13px 22px; font-size: 13.5px; color: var(--ink); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+  .pill-link:hover { border-color: var(--rb-pink); transform: translateY(-2px); }
+  .pill-dot { color: #fff; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; }
+  .pill-arrow { color: var(--rb-pink); transition: transform 0.2s; }
+  .pill-link:hover .pill-arrow { transform: translateX(3px); }
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 980px) {
+    .rb-strategy { flex-wrap: wrap; }
+    .rb-strat-card { flex: 1 1 calc(50% - 8px); }
+    .rb-strat-arrow { display: none; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; } .nav-links { gap: 18px; }
+    .back-link { margin: 28px 0 0 24px; }
+    section { padding: 32px 24px; }
+    .rb-hero { grid-template-columns: 1fr; gap: 26px; }
+    .rb-hero h1 { font-size: 46px; white-space: normal; }
+    .rb-strat-card { flex: 1 1 100%; }
+    .rb-action-row { grid-template-columns: 1fr; gap: 40px; }
+    .rb-visual { grid-template-columns: 1fr; }
+    .rb-tone { align-self: flex-start; }
+    .rb-pdp-body { grid-template-columns: 1fr; }
+    .rb-disclaimer { white-space: normal; font-size: 10px; }
+    .next-piece { margin: 0 24px; flex-direction: column; align-items: flex-start; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
+    <img src="sa-logo.jpg" alt="SA monogram" style="height:42px; width:auto; display:block;">
+    <span style="display:flex; flex-direction:column; gap:3px;">
+      <span class="nav-name">Samaira Aima</span>
+      <span style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--light-text);">Marketing Portfolio</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="index.html#explore">Explore</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="samaira-aima-resume.pdf" target="_blank">Resume</a></li>
+  </ul>
+</nav>
+
+<a href="concepts.html" class="back-link">← Back to original concepts</a>
+
+<!-- HERO -->
+<section style="padding-top:32px;">
+  <div class="rb-hero reveal">
+    <div>
+      <div class="rb-eyebrow">If I were on the brand team · Rare Beauty</div>
+      <h1>Still <em>Showing Up.</em></h1>
+      <p class="rb-hero-desc">A campaign concept for Rare Beauty about getting ready while figuring life out.</p>
+    </div>
+    <img src="rb-hero.jpg" alt="Getting ready" class="rb-hero-img" onerror="this.style.display='flex';this.alt='rb-hero.jpg'">
+  </div>
+</section>
+
+<!-- THE STRATEGY -->
+<section>
+  <div class="rb-section-head">The Strategy</div>
+  <div class="rb-strategy reveal">
+    <div class="rb-strat-card"><div class="rb-strat-num">01</div><h4>The Tension</h4><p>Beauty shows confidence after the product. Real routines happen before the confidence arrives.</p></div>
+    <div class="rb-strat-arrow">→</div>
+    <div class="rb-strat-card"><div class="rb-strat-num">02</div><h4>The Insight</h4><p>People get ready in moments of uncertainty, anxiety, tiredness, or transition. Makeup becomes a small ritual that helps them show up.</p></div>
+    <div class="rb-strat-arrow">→</div>
+    <div class="rb-strat-card"><div class="rb-strat-num">03</div><h4>Our Opportunity</h4><p>Rare Beauty can own the honest "getting ready while figuring life out" moment, turning everyday routines into stories of self-support.</p></div>
+    <div class="rb-strat-arrow">→</div>
+    <div class="rb-strat-card"><div class="rb-strat-num">04</div><h4>Big Idea</h4><p>Still Showing Up celebrates the tiny choice to keep going, even when you don't feel fully ready.</p></div>
+    <div class="rb-strat-arrow">→</div>
+    <div class="rb-strat-card pos"><div class="rb-strat-num">05</div><h4>Positioning Line</h4><p>You don't have to have it all together to show up.</p></div>
+  </div>
+</section>
+
+<!-- THE CAMPAIGN IN ACTION -->
+<section>
+  <div class="rb-section-head">The Campaign in Action</div>
+  <div class="rb-action reveal">
+
+    <div class="rb-manifesto rb-action-manifesto">
+      <div class="rb-block-label">Campaign Manifesto</div>
+      <p>Some days, confidence doesn't come first. Sometimes you get ready while you're still tired. Still nervous. Still unsure. Still figuring it out.</p>
+      <p>But you put on the blush. You answer the email. You walk into class. You take the meeting. You have the conversation.</p>
+      <p>Not because everything is perfect. Because you're still here. Still trying. Still showing up.</p>
+      <div class="sign">Still Showing Up.</div>
+    </div>
+
+    <div class="rb-action-row">
+    <div>
+      <div class="rb-block-label">Short-Form Video Concepts</div>
+      <div class="rb-phones">
+        <div class="rb-phone">
+          <div class="rb-phone-top">Before the interview.</div>
+          <div class="rb-phone-play">▶</div>
+          <div class="rb-phone-bot">A little blush to believe in yourself.</div>
+        </div>
+        <div class="rb-phone">
+          <div class="rb-phone-top">For the class you almost skipped.</div>
+          <div class="rb-phone-play">▶</div>
+          <div class="rb-phone-bot">You came anyway. That counts.</div>
+        </div>
+        <div class="rb-phone">
+          <div class="rb-phone-top">Before the hard conversation.</div>
+          <div class="rb-phone-play">▶</div>
+          <div class="rb-phone-bot">You don't have to feel ready to show up.</div>
+        </div>
+      </div>
+      <div class="rb-hashtag">#StillShowingUp</div>
+    </div>
+
+    <div>
+      <div class="rb-block-label">Campaign Visual Direction</div>
+      <div class="rb-visual">
+        <div class="rb-moodboard">
+          <div class="rb-mood-img">rb-mood1</div>
+          <div class="rb-mood-img">rb-mood2</div>
+          <div class="rb-mood-img">rb-mood3</div>
+          <div class="rb-mood-img">rb-mood4</div>
+        </div>
+        <div class="rb-tone">
+          <div class="rb-tone-label">Tone</div>
+          <div class="rb-tone-words">honest<br>warm<br>gentle<br>real</div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- PRODUCT PAGE COPY -->
+<section style="border-top:0.5px solid var(--border); margin:0 64px; padding-left:0; padding-right:0;">
+  <div class="rb-section-head">Product Page Copy Concept</div>
+  <div class="rb-pdp-wrap reveal">
+    <div class="rb-pdp">
+      <div class="rb-pdp-bar"><span class="brand">Rare Beauty</span><span>Shop</span><span>Rare Impact</span><span>Shade Finder</span></div>
+      <div class="rb-pdp-body">
+        <div>
+          <h3>For the days you're still finding your way.</h3>
+          <p>Simple, soft, and made to help you feel like you, before whatever comes next.</p>
+          <span class="rb-pdp-btn">Shop the routine</span>
+        </div>
+        <img src="rb-product.jpg" alt="The Still Showing Up Set" class="rb-pdp-prod" onerror="this.style.display='flex';this.alt='rb-product.jpg'">
+      </div>
+      <div class="rb-pdp-foot">
+        <div class="rb-pdp-set">The Still Showing Up Set</div>
+        <div class="rb-pdp-items">Soft Pinch Blush · Tinted Moisturizer · Lip Oil</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="rb-disclaimer">Concept only. Not affiliated with, endorsed by, or commissioned by Rare Beauty. Brand name and products referenced for illustrative portfolio purposes only.</p>
+</section>
+
+<footer>
+  <p>© 2026 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
