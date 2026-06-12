@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Original Concepts — Samaira Aima</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-white: #FDFAF6; --cream: #F5EFE6; --rose: #F2DDE0; --rose-dark: #8C3A45; --rose-mid: #C4818A;
+    --yellow: #F7EEB8; --yellow-dark: #7A6300; --terracotta: #F5E6D3; --terra-dark: #8C5E2A; --terra-mid: #C4956A;
+    --ink: #2C2519; --muted: #7A6B5A; --border: #E8DDD0; --light-text: #B0A090;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 15px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(253,250,246,0.95); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 22px 64px; }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .head { padding: 64px 64px 8px; }
+  .head .eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light-text); margin-bottom: 18px; }
+  .head h1 { font-family: 'Playfair Display', serif; font-size: 56px; line-height: 1.02; letter-spacing: -0.01em; margin-bottom: 18px; }
+  .head h1 em { font-style: italic; color: var(--rose-dark); }
+  .head p { font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 560px; }
+  .list { padding: 36px 64px 60px; }
+  .item { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; padding: 28px 26px; margin-bottom: 14px; background: #fff; border: 0.5px solid var(--border); border-radius: 14px; text-decoration: none; color: inherit; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+  .item:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(140,58,69,0.16); border-color: var(--rose-mid); }
+  .item-cat { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-text); margin-bottom: 8px; }
+  .item-title { font-family: 'Playfair Display', serif; font-size: 26px; line-height: 1.15; color: var(--ink); margin-bottom: 8px; }
+  .item-title em { font-style: italic; color: var(--rose-mid); }
+  .item-desc { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 620px; }
+  .item-right { display: flex; align-items: center; gap: 18px; white-space: nowrap; }
+  .item-tag { font-size: 13px; color: var(--terra-dark); font-style: italic; }
+  .item-arrow { font-size: 18px; color: var(--light-text); transition: transform 0.25s ease, color 0.2s; }
+  .item:hover .item-arrow { transform: translate(4px,-4px); color: var(--terra-mid); }
+  footer { border-top: 0.5px solid var(--border); padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-size: 12px; color: var(--light-text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; } .nav-links { gap: 18px; }
+    .head { padding: 48px 24px 8px; } .head h1 { font-size: 38px; }
+    .list { padding: 28px 24px 40px; }
+    .item { grid-template-columns: 1fr; gap: 14px; }
+    .item-right { justify-content: space-between; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
+    <img src="sa-logo.jpg" alt="SA monogram" style="height:42px; width:auto; display:block;">
+    <span style="display:flex; flex-direction:column; gap:3px;">
+      <span class="nav-name">Samaira Aima</span>
+      <span style="font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--light-text);">Marketing Portfolio</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="index.html#explore">Explore</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="samaira-aima-resume.pdf" target="_blank">Resume</a></li>
+  </ul>
+</nav>
+
+<section class="head">
+  <div class="eyebrow">Brand work · campaigns I built</div>
+  <h1>Original <em>concepts.</em></h1>
+  <p>Campaigns I created from scratch. The tension, the insight, the idea, and how it would actually show up in the world.</p>
+</section>
+
+<div class="list">
+  <a class="item" href="index.html#work">
+    <div>
+      <div class="item-cat">Brand Collab Concept · Liquid I.V. × Laneige</div>
+      <div class="item-title">Inside <em>Out</em></div>
+      <div class="item-desc">A four-part recovery routine pairing hydration and skincare around one shared consumer moment. Hydration for your body, recovery for your skin.</div>
+    </div>
+    <div class="item-right"><span class="item-tag">View brand collab</span><span class="item-arrow">↗</span></div>
+  </a>
+
+  <a class="item" href="rare-beauty.html">
+    <div>
+      <div class="item-cat">Campaign Concept · Rare Beauty</div>
+      <div class="item-title">Still <em>Showing Up</em></div>
+      <div class="item-desc">A campaign about getting ready for the moments that scare you a little. The makeup you do before you feel ready, reframed as quiet proof that you showed up anyway.</div>
+    </div>
+    <div class="item-right"><span class="item-tag">View concept</span><span class="item-arrow">↗</span></div>
+  </a>
+</div>
+
+<footer>
+  <p>© 2026 Samaira Aima</p>
+  <div class="footer-links">
+    <a href="mailto:samairaaima07@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/samaira-aima/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
